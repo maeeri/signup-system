@@ -20,7 +20,7 @@
                         {
                             <div class="form-group">
                                 <input type="radio" name="Camp.Id" value="@camp.Id">
-                                <label>@camp.Name @camp.Start-@camp.End</label><br>
+                                <label>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</label><br>
                                 <input type="hidden" name="CampPeople.Camp" value="@camp.Id"/>
                             </div>
                         }
@@ -76,7 +76,6 @@
             <div>
                 <div class="form-group">
                     <label asp-for="CampPeople.RideIn" class="control-label">Bus to the camp</label>
-                    <input asp-for="CampPeople.RideIn" class="form-control"/>
                     <span asp-validation-for="CampPeople.RideIn" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -86,20 +85,25 @@
                     <label>no</label><br/>
                 </div>
             </div>
-            <div>
-                <div class="form-group">
-                    <label asp-for="CampPeople.RideOut" class="control-label">Bus to the camp</label>
-                    <input asp-for="CampPeople.RideOut" class="form-control"/>
-                    <span asp-validation-for="CampPeople.RideOut" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="true"/>
-                    <label>yes</label><br/>
-                    <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="false"/>
-                    <label>no</label><br/>
-                </div>
+        <div>
+            <div class="form-group">
+                <label asp-for="CampPeople.RideOut" class="control-label">Bus to the camp</label>
+                <span asp-validation-for="CampPeople.RideOut" class="text-danger"></span>
             </div>
-            <div id="allergies0">
+            <div class="form-group">
+                <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="true"/>
+                <label>yes</label><br/>
+                <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="false"/>
+                <label>no</label><br/>
+            </div>
+        </div>
+        <div>
+            <button id="trigger0">Add allergy info</button>
+        </div>
+            <div>
+                <button id="trigger10">Add medication info</button>
+            </div>
+            <div id="allergies0" style="display: none">
                 <div class="form-group">
                     <label asp-for="Allergies[0].Item" class="control-label">Allergy</label>
                     <input asp-for="Allergies[0].Item" class="form-control"/>
@@ -171,22 +175,22 @@
                     <button id="trigger4">Add more</button>
                 </div>
             </div>
-            <div id="allergies4" style="display: none">
-                <div class="form-group">
-                    <label asp-for="Allergies[4].Item" class="control-label">Allergy</label>
-                    <input asp-for="Allergies[4].Item" class="form-control"/>
-                    <span asp-validation-for="Allergies[4].Item" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="1">
-                    <label asp-for="Allergies[4].Severity">High</label><br>
-                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="2">
-                    <label asp-for="Allergies[4].Severity">Manageable with medication</label><br>
-                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="3">
-                    <label asp-for="Allergies[4].Severity">Nah</label>
-                </div>
+        <div id="allergies4" style="display: none">
+            <div class="form-group">
+                <label asp-for="Allergies[4].Item" class="control-label">Allergy</label>
+                <input asp-for="Allergies[4].Item" class="form-control"/>
+                <span asp-validation-for="Allergies[4].Item" class="text-danger"></span>
             </div>
-            <div>
+            <div class="form-group">
+                <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="1">
+                <label asp-for="Allergies[4].Severity">High</label><br>
+                <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="2">
+                <label asp-for="Allergies[4].Severity">Manageable with medication</label><br>
+                <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="3">
+                <label asp-for="Allergies[4].Severity">Nah</label>
+            </div>
+        </div>
+        <div id="medication0" style="display: none">
                 <div class="form-group">
                     <label asp-for="Medications[0].Item" class="control-label"></label>
                     <input asp-for="Medications[0].Item" class="form-control"/>
@@ -289,3 +293,4 @@
 }
 
 <script src="~/js/SignUp.js"></script>
+    <link rel="stylesheet" href="~/css/SignUp.css" />

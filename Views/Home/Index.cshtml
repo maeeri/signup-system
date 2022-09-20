@@ -1,7 +1,31 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Home Page";
+    var userClaimsDictionary = new Dictionary<string, string>();
+    var i = 2;
+    foreach (var claim in User.Claims)
+    {
+        if (userClaimsDictionary.Keys.Any(x => x.Equals(claim.Type)))
+        {
+            userClaimsDictionary.Add(claim.Type + i, claim.Value);
+            i++;
+        }
+        else
+        {
+            userClaimsDictionary.Add(claim.Type, claim.Value);
+        }
+    }
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h1>Welcome back, @User.Identity.Name</h1>
+        <img src=@userClaimsDictionary["picture"] alt="there should be a picture here..." />
+    }
+    else
+    {
+        <h1 class="display-4">Welcome</h1>
+    }
+    
 </div>

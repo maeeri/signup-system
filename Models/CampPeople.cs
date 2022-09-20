@@ -8,9 +8,11 @@ namespace SignUpProject.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         [ForeignKey("Camp")]
         public int Camp { get; set; }
+
         [Required]
         [ForeignKey("Camper")]
         public int Camper { get; set; }

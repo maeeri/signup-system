@@ -21,6 +21,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
             return _context.Counselor != null ?
@@ -29,6 +30,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -47,6 +49,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult AddCounselor()
         {
             var viewModel = new ViewModel();
@@ -59,6 +62,7 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddCounselor(/*[Bind("CompleteStaff,Counselor,Camps")]*/ ViewModel viewModel)
         {
             try
@@ -84,6 +88,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -104,6 +109,7 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Tel,StreetAddress,PostalCode,City")] Counselor councelor)
         {
             if (id != councelor.Id)
@@ -135,6 +141,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -153,6 +160,7 @@ namespace SignUpProject.Controllers
         }
 
         // POST: Councelors/Delete/5
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
