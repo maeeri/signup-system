@@ -1,0 +1,291 @@
+﻿@model SignUpProject.Models.ViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<h1>SignUp</h1>
+
+<h4>Camper</h4>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SignUp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Camp.Id" class="control-label">Select the camp you want to attend</label><br/>
+                <div class="form-group">
+                    @{
+                        foreach (var camp in Model.Camps)
+                        {
+                            <div class="form-group">
+                                <input type="radio" name="Camp.Id" value="@camp.Id">
+                                <label>@camp.Name @camp.Start-@camp.End</label><br>
+                                <input type="hidden" name="CampPeople.Camp" value="@camp.Id"/>
+                            </div>
+                        }
+                    }
+                    <span asp-validation-for="Camp!.Id" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper!.FirstName" class="control-label"></label>
+                <input asp-for="Camper!.FirstName" class="form-control"/>
+                <span asp-validation-for="Camper!.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper!.LastName" class="control-label"></label>
+                <input asp-for="Camper!.LastName" class="form-control"/>
+                <span asp-validation-for="Camper!.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper.StreetAddress" class="control-label"></label>
+                <input asp-for="Camper.StreetAddress" class="form-control"/>
+                <span asp-validation-for="Camper.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper.PostalCode" class="control-label"></label>
+                <input asp-for="Camper.PostalCode" class="form-control"/>
+                <span asp-validation-for="Camper.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper.City" class="control-label"></label>
+                <input asp-for="Camper.City" class="form-control"/>
+                <span asp-validation-for="Camper.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Camper.DoB" class="control-label"></label>
+                <input type="date" asp-for="Camper.DoB" class="form-control"/>
+                <span asp-validation-for="Camper.DoB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Guardian.Name" class="control-label"></label>
+                <input asp-for="Guardian.Name" class="form-control"/>
+                <span asp-validation-for="Guardian.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Guardian.Email" class="control-label"></label>
+                <input asp-for="Guardian.Email" class="form-control"/>
+                <span asp-validation-for="Guardian.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Guardian.Tel" class="control-label"></label>
+                <input asp-for="Guardian.Tel" class="form-control"/>
+                <span asp-validation-for="Guardian.Tel" class="text-danger"></span>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label asp-for="CampPeople.RideIn" class="control-label">Bus to the camp</label>
+                    <input asp-for="CampPeople.RideIn" class="form-control"/>
+                    <span asp-validation-for="CampPeople.RideIn" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="CampPeople.RideIn" name="CampPeople.RideIn" value="true"/>
+                    <label>yes</label><br/>
+                    <input type="radio" asp-for="CampPeople.RideIn" name="CampPeople.RideIn" value="false"/>
+                    <label>no</label><br/>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label asp-for="CampPeople.RideOut" class="control-label">Bus to the camp</label>
+                    <input asp-for="CampPeople.RideOut" class="form-control"/>
+                    <span asp-validation-for="CampPeople.RideOut" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="true"/>
+                    <label>yes</label><br/>
+                    <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="false"/>
+                    <label>no</label><br/>
+                </div>
+            </div>
+            <div id="allergies0">
+                <div class="form-group">
+                    <label asp-for="Allergies[0].Item" class="control-label">Allergy</label>
+                    <input asp-for="Allergies[0].Item" class="form-control"/>
+                    <span asp-validation-for="Allergies[0].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="1">
+                    <label asp-for="Allergies[0].Severity">High</label><br>
+                    <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="2">
+                    <label asp-for="Allergies[0].Severity">Manageable with medication</label><br>
+                    <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="3">
+                    <label asp-for="Allergies[0].Severity">Nah</label>
+                </div>
+                <div>
+                    <button id="trigger1">Add more</button>
+                </div>
+            </div>
+            <div id="allergies1" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Allergies[1].Item" class="control-label">Allergy</label>
+                    <input asp-for="Allergies[1].Item" class="form-control"/>
+                    <span asp-validation-for="Allergies[1].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="1">
+                    <label asp-for="Allergies[1].Severity">High</label><br>
+                    <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="2">
+                    <label asp-for="Allergies[1].Severity">Manageable with medication</label><br>
+                    <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="3">
+                    <label asp-for="Allergies[1].Severity">Nah</label>
+                </div>
+                <div>
+                    <button id="trigger2">Add more</button>
+                </div>
+            </div>
+            <div id="allergies2" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Allergies[2].Item" class="control-label">Allergy</label>
+                    <input asp-for="Allergies[2].Item" class="form-control"/>
+                    <span asp-validation-for="Allergies[2].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="1">
+                    <label asp-for="Allergies[2].Severity">High</label><br>
+                    <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="2">
+                    <label asp-for="Allergies[2].Severity">Manageable with medication</label><br>
+                    <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="3">
+                    <label asp-for="Allergies[2].Severity">Nah</label>
+                </div>
+                <div>
+                    <button id="trigger3">Add more</button>
+                </div>
+            </div>
+            <div id="allergies3" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Allergies[3].Item" class="control-label">Allergy</label>
+                    <input asp-for="Allergies[3].Item" class="form-control"/>
+                    <span asp-validation-for="Allergies[3].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="1">
+                    <label asp-for="Allergies[3].Severity">High</label><br>
+                    <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="2">
+                    <label asp-for="Allergies[3].Severity">Manageable with medication</label><br>
+                    <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="3">
+                    <label asp-for="Allergies[3].Severity">Nah</label>
+                </div>
+                <div>
+                    <button id="trigger4">Add more</button>
+                </div>
+            </div>
+            <div id="allergies4" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Allergies[4].Item" class="control-label">Allergy</label>
+                    <input asp-for="Allergies[4].Item" class="form-control"/>
+                    <span asp-validation-for="Allergies[4].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="1">
+                    <label asp-for="Allergies[4].Severity">High</label><br>
+                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="2">
+                    <label asp-for="Allergies[4].Severity">Manageable with medication</label><br>
+                    <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="3">
+                    <label asp-for="Allergies[4].Severity">Nah</label>
+                </div>
+            </div>
+            <div>
+                <div class="form-group">
+                    <label asp-for="Medications[0].Item" class="control-label"></label>
+                    <input asp-for="Medications[0].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[0].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[0].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[0].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[0].Instructions" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="trigger5">Add more</button>
+                </div>
+            </div>
+            <div id="medication1" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Medications[1].Item" class="control-label"></label>
+                    <input asp-for="Medications[1].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[1].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[1].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[1].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[1].Instructions" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="trigger6">Add more</button>
+                </div>
+            </div>
+            <div id="medication2" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Medications[2].Item" class="control-label"></label>
+                    <input asp-for="Medications[2].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[2].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[2].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[2].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[2].Instructions" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="trigger7">Add more</button>
+                </div>
+            </div>
+            <div id="medication3" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Medications[3].Item" class="control-label"></label>
+                    <input asp-for="Medications[3].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[3].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[3].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[3].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[3].Instructions" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="trigger8">Add more</button>
+                </div>
+            </div>
+            <div id="medication4" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Medications[4].Item" class="control-label"></label>
+                    <input asp-for="Medications[4].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[4].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[4].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[4].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[4].Instructions" class="text-danger"></span>
+                </div>
+                <div>
+                    <button id="trigger9">Add more</button>
+                </div>
+            </div>
+            <div id="medication5" style="display: none">
+                <div class="form-group">
+                    <label asp-for="Medications[5].Item" class="control-label"></label>
+                    <input asp-for="Medications[5].Item" class="form-control"/>
+                    <span asp-validation-for="Medications[2].Item" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Medications[5].Instructions" class="control-label"></label>
+                    <input asp-for="Medications[5].Instructions" class="form-control"/>
+                    <span asp-validation-for="Medications[5].Instructions" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="SignUp" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
+<script src="~/js/SignUp.js"></script>

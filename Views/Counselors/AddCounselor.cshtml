@@ -1,0 +1,76 @@
+﻿@model SignUpProject.Models.ViewModel
+
+@{
+    ViewData["Title"] = "Add a councelor";
+}
+
+
+<h1>Add a councelor</h1>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCounselor">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Counselor!.FirstName" class="control-label"></label>
+                <input asp-for="Counselor!.FirstName" class="form-control"/>
+                <span asp-validation-for="Counselor!.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.LastName" class="control-label"></label>
+                <input asp-for="Counselor!.LastName" class="form-control"/>
+                <span asp-validation-for="Counselor!.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.Tel" class="control-label"></label>
+                <input asp-for="Counselor!.Tel" class="form-control"/>
+                <span asp-validation-for="Counselor!.Tel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.Email" class="control-label"></label>
+                <input asp-for="Counselor!.Email" class="form-control"/>
+                <span asp-validation-for="Counselor!.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.StreetAddress" class="control-label"></label>
+                <input asp-for="Counselor!.StreetAddress" class="form-control"/>
+                <span asp-validation-for="Counselor!.StreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.PostalCode" class="control-label"></label>
+                <input asp-for="Counselor!.PostalCode" class="form-control"/>
+                <span asp-validation-for="Counselor!.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Counselor!.City" class="control-label"></label>
+                <input asp-for="Counselor!.City" class="form-control"/>
+                <span asp-validation-for="Counselor!.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Camps
+                <div class="form-group">
+                    <label asp-for="Camp!.Id" class="control-label">Select the camps</label><br/>
+                    @{
+                        
+                        if (Model.Camps != null)
+                        {
+                            var i = 0;
+                            foreach (var camp in Model.Camps)
+                            {
+                                <input type="radio" value="@camp.Id" asp-for="CompleteStaff![i].Camp"/>
+                                <label>@camp.Name @camp.Start.Date - @camp.End.Date</label>
+                                <input type="checkbox" asp-for="CompleteStaff![i].IsInCharge"/>
+                                <label>Head counselor for the camp</label>
+                                <br>
+                                i++;
+                            }
+                        }
+                    }
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add councelor" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
