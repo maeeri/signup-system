@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Rajdhani&display=swap');
+
 html {
   font-size: 14px;
 }
@@ -14,5 +16,26 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Amatic SC', cursive;
+}
+
+a {
+    text-decoration: none;
+    color: #63437a;
+}
+
+a:hover {
+    color: #340b54;
+}
+
+.contents {
+    background-color: white;
+    box-shadow: 2px 2px 3px grey;
+    margin-top: 10%;
+    padding: 1.5%;
 }

@@ -16,43 +16,43 @@
             <div class="container-fluid">
                <div>
                    <div class="content navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                            <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                                </li>
-
-                            @if (User.Identity.IsAuthenticated)
+                            <div class="navbar-nav flex-grow-1">
+                                <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
                             {
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Camps" asp-action="Index">Camps</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Camps" asp-action="Create">Add a camp</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Counselors" asp-action="AddCounselor">Add a counselor</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="UserProfile">Profile</a>
-                                </li>
-                            }
+                                <div class="nav-item nav-link dropdown">
+                                    <a class="btn btn-secondary dropbtn" id="staffBtn" aria-haspopup="true" aria-expanded="false">
+                                        Staff actions
+                                    </a>
+                                    <div class="dropdown-content" id="staffActions">
+                                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="UserProfile">Profile</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">Camps</a>
+                                    </div>
+                                </div>
+                                @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+                                {
+                                    <div class="dropdown nav-item nav-link">
+                                        <a class="btn btn-secondary dropbtn" id="adminBtn" aria-haspopup="true" aria-expanded="false">
+                                            Admin actions
+                                        </a>
+                                        <div class="dropdown-content" id="adminActions">
+                                            <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Create">Add a camp</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="AddCounselor">Add a counselor</a>
+                                        </div>
+                                    </div>
+                                }
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                               
+                                
+                            } 
                             else
                             {
                                 
-                                <li class="nav-item">
                                     <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp"> Camp sign up</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                                </li>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                          
                             }
-                            </ul>
+                            </div>
                         </div>
                     
                 </div>
