@@ -6,7 +6,7 @@ A work in progress
 
 Features:
 
-Auth0 authorization (organization based),
+Auth0 authorization (organization based), \n
 SQL Database (structure in the Media file),
 ASP.NET Core 6.0 Model-View-Controller Web App,
 Anyone can sign up for summer camps, 
