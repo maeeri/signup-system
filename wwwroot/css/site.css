@@ -34,8 +34,11 @@ a:hover {
 }
 
 .contents {
+    margin: 0 auto;
+    width: 100%;
     background-color: white;
     box-shadow: 2px 2px 3px grey;
     margin-top: 10%;
+    margin-bottom: 10%;
     padding: 1.5%;
 }

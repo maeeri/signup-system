@@ -52,7 +52,7 @@ namespace SignUpProject.Controllers
                 {
                     Name = fakeGuardiansList[i].firstname + fakeGuardiansList[i].lastname,
                     Email = fakeGuardiansList[i].email,
-                    Tel = (int)Convert.ToInt64(fakeGuardiansList[i].phone.Replace("+", ""))
+                    Tel = fakeGuardiansList[i].phone
                 };
 
                 _context.Add(guardian);
@@ -64,7 +64,7 @@ namespace SignUpProject.Controllers
                     LastName = fakeCampersList[i].lastname,
                     StreetAddress = fakeCampersList[i].address.street,
                     DoB = Convert.ToDateTime(fakeCampersList[i].birthday),
-                    PostalCode = Convert.ToInt32(fakeCampersList[i].address.zipcode.Replace("-", "")),
+                    PostalCode = fakeCampersList[i].address.zipcode,
                     City = fakeCampersList[i].address.city,
                     Guardian = viewModel.Guardian.Id
                 };
@@ -138,9 +138,9 @@ namespace SignUpProject.Controllers
                     LastName = fakeCounselorsList[i].lastname,
                     StreetAddress = fakeCounselorsList[i].address.streetName,
                     City = fakeCounselorsList[i].address.city,
-                    PostalCode = Convert.ToInt32(fakeCounselorsList[i].address.zipcode.Replace("-", "")),
+                    PostalCode = fakeCounselorsList[i].address.zipcode,
                     Email = fakeCounselorsList[i].email,
-                    Tel = (int)Convert.ToInt64(fakeCounselorsList[i].phone.Replace("+", ""))
+                    Tel = fakeCounselorsList[i].phone
                 };
 
                 _context.Add(counselor);

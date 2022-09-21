@@ -14,11 +14,16 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-               <div>
-                   <div class="content navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                            <div class="navbar-nav flex-grow-1">
-                                <a class="nav-item nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                                @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
+                <div>
+                    <div class="content navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <div class="navbar-nav flex-grow-1">
+                            <div class="nav-item nav-link">
+                                <div>
+                                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                </div>
+                            </div>
+
+                            @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
                             {
                                 <div class="nav-item nav-link dropdown">
                                     <a class="btn btn-secondary dropbtn" id="staffBtn" aria-haspopup="true" aria-expanded="false">
@@ -29,6 +34,7 @@
                                         <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">Camps</a>
                                     </div>
                                 </div>
+
                                 @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
                                 {
                                     <div class="dropdown nav-item nav-link">
@@ -41,22 +47,26 @@
                                         </div>
                                     </div>
                                 }
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
                                
-                                
-                            } 
+                                <div class="nav-item nav-link">
+                                    <div>
+                                        <a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                    </div>
+                                </div>
+
+
+                            }
                             else
                             {
-                                
-                                    <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp"> Camp sign up</a>
+
+                                <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp"> Camp sign up</a>
                                 <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                          
+
                             }
-                            </div>
                         </div>
-                    
+                    </div>
                 </div>
-                </div>
+            </div>
         </nav>
     </header>
 <div class="container">

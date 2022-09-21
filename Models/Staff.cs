@@ -32,9 +32,9 @@ namespace SignUpProject.Models
         public string? Email { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
-        public int Tel { get; set; }
+        public string? Tel { get; set; }
         public string? StreetAddress { get; set; }
-        public int PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         public string? City { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace SignUpProject.Models
         public string? LastName { get; set; }
         [DisplayName("Street address")]
         public string? StreetAddress { get; set; }
-        public int PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         public string? City { get; set; }
         [DisplayFormat(DataFormatString = "{0: d.M.yyyy}")]
         public DateTime DoB { get; set; }
@@ -81,7 +81,7 @@ namespace SignUpProject.Models
         public string? Email { get; set; }
         [Required]
         [DataType(DataType.PhoneNumber)]
-        public int Tel { get; set; }
+        public string? Tel { get; set; }
     }
 
     public enum AllergySeverity
