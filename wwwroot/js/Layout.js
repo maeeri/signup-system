@@ -1,14 +1,26 @@
-﻿//var coll = document.getElementsByClassName("collapsible");
-//var i;
+﻿let stBtn = document.getElementById("staffBtn")
+let admBtn = document.getElementById("adminBtn")
 
-//for (i = 0; i < coll.length; i++) {
-//    coll[i].addEventListener("click", function () {
-//        this.classList.toggle("active");
-//        var content = this.nextElementSibling;
-//        if (content.style.display === "block") {
-//            content.style.display = "none";
-//        } else {
-//            content.style.display = "block";
-//        }
-//    });
-//}
+let stMenu = document.getElementById("staffActions")
+let admMenu = document.getElementById("adminActions")
+
+stBtn.addEventListener("click", () => {
+    stMenu.classList.toggle("show")
+})
+
+admBtn.addEventListener('click', () => {
+    admMenu.classList.toggle('show')
+})
+
+window.onclick = function (e) {
+    if (!e.target.matches("#staffBtn")) {
+        if (stMenu.classList.contains("show")) {
+            stMenu.classList.remove("show");
+        }
+    }
+    if (!e.target.matches("#adminBtn")) {
+        if (admMenu.classList.contains("show")) {
+            admMenu.classList.remove("show");
+        }
+    }
+}
