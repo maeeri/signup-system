@@ -171,7 +171,6 @@ namespace SignUpProject.Controllers
         // POST: SignUpsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteCamper(int id)
         {
             ViewModel viewModel = new ViewModel();
@@ -187,7 +186,6 @@ namespace SignUpProject.Controllers
         // POST: SignUpsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
