@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using SignUpProject.Data;
 using SignUpProject.Models;
 
-namespace CampSignUpProject.Controllers
+namespace SignUpProject.Controllers
 {
     public class CampsController : Controller
     {
@@ -22,39 +22,18 @@ namespace CampSignUpProject.Controllers
 
         //[Authorize]
         // GET: Camps
-        [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Index()
         {
             var viewModel = new ViewModel();
             viewModel.Camps = await _context.Camp?.ToListAsync()!;
-            viewModel.AllCampPeople = await _context.CampPeople.ToListAsync();
-            viewModel.CompleteStaff = await _context.Staff.ToListAsync();
 
             return View(viewModel);
         }
 
         //[Authorize]
         // GET: Camps/Details/5
-        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
-            ViewModel viewModel = new ViewModel();
-            viewModel.Counselors = new List<Counselor>();
-            viewModel.Campers = new List<Camper>();
-            viewModel.Camp = _context.Camp!.FirstOrDefault(x => x.Id == id);
-            viewModel.CompleteStaff = _context.Staff!.Where(x => x.Camp == id).ToList();
-            foreach (var staff in viewModel.CompleteStaff)
-            {
-                viewModel.Counselors!.Add(_context.Counselor!.FirstOrDefault(x => x.Id == staff.Counselor)!);
-            }
-
-            viewModel.AllCampPeople = _context.CampPeople.Where(x => x.Camp == id).ToList();
-
-            foreach (var person in viewModel.AllCampPeople)
-            {
-                viewModel.Campers!.Add(_context.Camper.FirstOrDefault(x => x.Id == person.Camper)!);
-            }
-
             if (id == null || _context.Camp == null)
             {
                 return NotFound();
@@ -67,11 +46,10 @@ namespace CampSignUpProject.Controllers
                 return NotFound();
             }
 
-            return View(viewModel);
+            return View(camp);
         }
 
         // GET: Camps/Create
-        [Authorize(Roles="Admin")]
         public IActionResult Create()
         {
             return View();
@@ -82,7 +60,6 @@ namespace CampSignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,Location,Capacity,Start,End")] Camp camp)
         {
             if (ModelState.IsValid)
@@ -115,7 +92,6 @@ namespace CampSignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Location,Capacity,Start,End")] Camp camp)
         {
             if (id != camp.Id)
@@ -147,7 +123,6 @@ namespace CampSignUpProject.Controllers
         }
 
         // GET: Camps/Delete/5
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Camp == null)
@@ -168,7 +143,6 @@ namespace CampSignUpProject.Controllers
         // POST: Camps/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Camp == null)

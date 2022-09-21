@@ -58,12 +58,10 @@
                             foreach (var camp in Model.Camps)
                             {
                                 <input type="radio" value="@camp.Id" asp-for="CompleteStaff![i].Camp"/>
-                                <label>@camp.Name @camp.Start.ToString("d.M.yyyy") - @camp.End.ToString("d.M.yyyy")</label>
-                                <br/>
+                                <label>@camp.Name @camp.Start.Date - @camp.End.Date</label>
                                 <input type="checkbox" asp-for="CompleteStaff![i].IsInCharge"/>
                                 <label>Head counselor for the camp</label>
-                                <br/>
-                                <br/>
+                                <br>
                                 i++;
                             }
                         }
