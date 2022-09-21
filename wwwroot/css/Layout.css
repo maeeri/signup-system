@@ -15,9 +15,10 @@ body {
     top: 0;
     width: 100%;
     overflow: hidden;
+    position: absolute;
 }
 
-.navbar a {
+.navbar a, li a {
     float: left;
     display: block;
     text-align: center;
@@ -25,25 +26,11 @@ body {
     text-decoration: none;
     color: grey;
     font-family: 'Rajdhani', sans-serif;
-    marker: none;
 }
 
-.navbar-flex {
-    display: inline;
+a:hover {
+    background-color: lightgray;
 }
-
-.navbar-nav, .nav-item, .navbar-collapse, .navbar-toggler {
-    margin-left: 2%;
-    float: left;
-    
-}
-
-
-
-.navbar-collapse {
-
-}
-
 
 .navbar-toggler {
     margin-right: 0;
@@ -64,24 +51,11 @@ button {
 
 li {
     marker: none;
-}
-
-.collapsible {
-    cursor: pointer;
-    padding: 18px;
-    border: none;
     text-align: left;
-    outline: none;
-    font-size: 15px;
+    display: block;
+    position: relative;
 }
 
 .active, .collapsible:hover {
     background-color: lightgrey;
-}
-
-.content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
 }
