@@ -1,3 +1,61 @@
-﻿body {
+﻿@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+
+
+body {
+    background-color: aliceblue;
+    margin-top: 8%;
 }
 
+.navbar, .footer{
+    background-color: white;
+    position: fixed;
+}
+
+.navbar {
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+}
+
+.navbar a, li a {
+    float: left;
+    display: block;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: grey;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+a:hover {
+    background-color: lightgray;
+}
+
+.navbar-toggler {
+    margin-right: 0;
+    color: grey;
+    font-size: 2em;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+    border: none;
+    background: none;
+ }
+
+button {
+    border: none;
+    background: none;
+}
+
+li {
+    marker: none;
+    text-align: left;
+    display: block;
+    position: relative;
+}
+
+.active, .collapsible:hover {
+    background-color: lightgrey;
+}

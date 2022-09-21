@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authorization.Infrastructure;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using SignUpProject.Data;
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,18 @@ builder.Services
         options.Scope = "openid profile email";
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminRole", policy =>
+        policy.Requirements.Add(new RolesAuthorizationRequirement(new[] { "Admin" })));
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("StaffRole", policy =>
+        policy.Requirements.Add(new RolesAuthorizationRequirement(new[] { "Staff" })));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,7 +43,6 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
