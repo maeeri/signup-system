@@ -3,12 +3,19 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<div class="container contents">
 <h1>Index</h1>
+@if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+{
+    <div class="row">
+        <a asp-action="Create">
+            <span title="add new camp" class="material-symbols-outlined">
+                add
+            </span>
+        </a>
+    </div>
+}
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -51,19 +58,37 @@
             @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
             {
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        <span title="edit @item.Name" class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </a> 
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <span title="@item.Name details" class="material-symbols-outlined">
+                            info
+                        </span>
+                    </a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <span title="delete @item.Name" class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </a>
                 </td>
             }
             else
             {
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Details" asp-route-id="@item.Id">
+                        <span title="@item.Name details" class="material-symbols-outlined">
+                            info
+                        </span>
+                    </a>
                 </td>
             }
             
         </tr>
 }
+
     </tbody>
 </table>
+</div>
