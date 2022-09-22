@@ -24,6 +24,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Amatic SC', cursive;
+    margin-bottom: 10px;
 }
 
 a {
@@ -78,4 +79,11 @@ td, th {
 #trigger0:hover, #trigger10:hover {
     background-color: #63437a;
     color: white;
+}
+
+.language {
+    background-color: white;
+    padding: 5px;
+    margin: 2px;
+    color: grey;
 }

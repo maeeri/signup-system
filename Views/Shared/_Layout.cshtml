@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,32 +22,32 @@
                         <div class="navbar-nav flex-grow-1">
                             <div class="nav-item nav-link">
                                 <div>
-                                    <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                    <a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                                 </div>
                             </div>
 
                             @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
                             {
-                                <div class="nav-item dropdown">
-                                    <a class="btn btn-secondary dropbtn" id="staffBtn" aria-haspopup="true" aria-expanded="false">
-                                        Staff actions
+                                <div class="nav-item dropdown" style="color: grey">
+                                    <a class="nav-item nav-link dropbtn" id="staffBtn" aria-haspopup="true" aria-expanded="false">
+                                        @Localizer["Staff actions"] 
                                     </a>
                                     <div class="dropdown-content" id="staffActions">
-                                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="UserProfile">Profile</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">Camps</a>
-                                        <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="Counselors">Staff</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="UserProfile">@Localizer["Profile"]</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">@Localizer["Camps"]</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="Counselors">@Localizer["Staff"]</a>
 
                                         @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
                                         {
-                                            <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Create">Add a camp</a>
-                                            <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="AddCounselor">Add a counselor</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Create">@Localizer["Add a camp"]</a>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="AddCounselor">@Localizer["Add a counselor"]</a>
                                         }
                                     </div>
                                 </div>
                                
                                 <div class="nav-item nav-link">
                                     <div>
-                                        <a asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                                        <a asp-area="" asp-controller="Account" asp-action="Logout">@Localizer["Logout"]</a>
                                     </div>
                                 </div>
 
@@ -53,19 +56,26 @@
                             else
                             {
 
-                                <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp"> Camp sign up</a>
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp">@Localizer["Camp sign up"]</a>
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
 
                             }
+                            
+                            
                         </div>
                     </div>
                 </div>
+                <div class="text-right">
+                    @await Html.PartialAsync("SelectCulture")
+                </div>
             </div>
+            
         </nav>
     </header>
 <div class="container">
     <main role="main" class="pb-3">
         @RenderBody()
+            
     </main>
 </div>
 

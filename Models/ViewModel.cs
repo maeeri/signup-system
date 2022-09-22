@@ -25,5 +25,7 @@ namespace SignUpProject.Models
         public CampPeople? CampPeople { get; set; }
 
         public Guardian? Guardian { get; set; }
+
+        public UserProfile? UserProfile { get; set; }
     }
 }

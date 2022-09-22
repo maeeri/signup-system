@@ -1,5 +1,8 @@
 ﻿@using System.Security.Claims
 @using Microsoft.AspNetCore.Identity
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 @{
     ViewData["Title"] = "Home Page";
     var userClaimsDictionary = new Dictionary<string, string>();
@@ -23,19 +26,19 @@
         <img src="Media/android-chrome-512x512.png" height="100"/>
     </div>
     <div class="col">
-        <h1>Camp Signup Project</h1>
+        <h1>@Localizer["title"]</h1>
     </div>
 </div>
 
 <div class="text-center">
     @if (User.Identity.IsAuthenticated)
     {
-        <h4>Welcome back, @User.Identity.Name</h4>
+        <h3>@Localizer["welcome"] @User.Identity.Name</h3>
         
     }
     else
     {
-        <h1 class="display-4">Welcome</h1>
+        <h1 class="display-4">@Localizer["new welcome"]</h1>
     }
     
 </div>
