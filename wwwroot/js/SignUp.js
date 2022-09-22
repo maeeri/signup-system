@@ -24,57 +24,57 @@ let medshow5 = document.getElementById("medication5")
 
 alinput.addEventListener('click', el => {
     el.preventDefault()
-    alshow.style.display = 'inline'
+    alshow.classList.toggle('show')
 })
 
 alinput0.addEventListener('click', el => {
     el.preventDefault()
-    alshow1.style.display = 'inline'
+    alshow1.classList.toggle('show')
 })
 
 alinput1.addEventListener('click', el => {
     el.preventDefault()
-    alshow2.style.display = 'inline'
+    alshow2.classList.toggle('show')
 })
 
 alinput2.addEventListener('click', el => { 
     el.preventDefault()
-    alshow3.style.display = 'inline'
+    alshow3.classList.toggle('show')
 })
 
 
 alinput3.addEventListener('click', el => { 
     el.preventDefault()
-    alshow4.style.display = 'inline'
+    alshow4.classList.toggle('show')
 })
 
 medinput.addEventListener('click', el => {
     el.preventDefault()
-    medshow.style.display = 'inline'
+    medshow.classList.toggle('show')
 })
 
 medinput0.addEventListener('click', el => {
     el.preventDefault()
-    medshow1.style.display = 'inline'
+    medshow1.classList.toggle('show')
 })
 
 medinput1.addEventListener('click', el => {
     el.preventDefault()
-    medshow2.style.display = 'inline'
+    medshow2.classList.toggle('show')
 })
 
 medinput2.addEventListener('click', el => {
     el.preventDefault()
-    medshow3.style.display = 'inline'
+    medshow3.classList.toggle('show')
 })
 
 medinput3.addEventListener('click', el => {
     el.preventDefault()
-    medshow4.style.display = 'inline'
+    medshow4.classList.toggle('show')
 })
 
 medinput4.addEventListener('click', el => {
     el.preventDefault()
-    medshow5.style.display = 'inline'
+    medshow5.classList.toggle('show')
 })
 

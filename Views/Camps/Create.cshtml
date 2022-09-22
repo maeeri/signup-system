@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create";
 }
-
+<div class="contents">
 <h1>Create</h1>
 
 <h4>Camp</h4>
@@ -42,12 +42,15 @@
             </div>
         </form>
     </div>
+    <div class="col">
+        <img src="~/Media/campfire.jpg" width="750"/>
+    </div>
 </div>
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+</div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

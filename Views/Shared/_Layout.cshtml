@@ -25,28 +25,22 @@
 
                             @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
                             {
-                                <div class="nav-item nav-link dropdown">
+                                <div class="nav-item dropdown">
                                     <a class="btn btn-secondary dropbtn" id="staffBtn" aria-haspopup="true" aria-expanded="false">
                                         Staff actions
                                     </a>
                                     <div class="dropdown-content" id="staffActions">
                                         <a class="dropdown-item" asp-area="" asp-controller="Account" asp-action="UserProfile">Profile</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">Camps</a>
-                                    </div>
-                                </div>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="Counselors">Staff</a>
 
-                                @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
-                                {
-                                    <div class="dropdown nav-item nav-link">
-                                        <a class="btn btn-secondary dropbtn" id="adminBtn" aria-haspopup="true" aria-expanded="false">
-                                            Admin actions
-                                        </a>
-                                        <div class="dropdown-content" id="adminActions">
+                                        @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+                                        {
                                             <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Create">Add a camp</a>
                                             <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="AddCounselor">Add a counselor</a>
-                                        </div>
+                                        }
                                     </div>
-                                }
+                                </div>
                                
                                 <div class="nav-item nav-link">
                                     <div>

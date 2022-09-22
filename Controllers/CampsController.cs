@@ -34,19 +34,32 @@ namespace SignUpProject.Controllers
         // GET: Camps/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            var viewModel = new ViewModel();
+
             if (id == null || _context.Camp == null)
             {
                 return NotFound();
             }
 
-            var camp = await _context.Camp
+            viewModel.Camp = await _context.Camp
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (camp == null)
+            if (viewModel.Camp == null)
             {
                 return NotFound();
             }
 
-            return View(camp);
+            viewModel.Counselors = new List<Counselor>();
+
+            viewModel.CompleteStaff = _context.Staff?.Where(x => x.Camp == id).ToList();
+
+            if (viewModel.CompleteStaff != null)
+                foreach (var staff in viewModel.CompleteStaff)
+                {
+                    viewModel.Counselors.Add(
+                        await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor));
+                }
+
+            return View(viewModel);
         }
 
         // GET: Camps/Create

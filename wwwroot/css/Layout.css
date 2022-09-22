@@ -9,7 +9,7 @@
     width: 100%;
     height: 50px;
     overflow: hidden;
-    background-color: aliceblue;
+    box-shadow: 2px 2px 3px grey;
 }
 
 .navbar a {
@@ -18,16 +18,14 @@
     font-size: inherit;
     color: inherit;
     text-align: center;
-    padding: 14px 16px;
     text-decoration: none;
-    color: grey;
     font-family: 'Rajdhani', sans-serif;
     outline: inherit;
     background-color: inherit;
 }
 
 footer {
-    background-color: aliceblue;
+    background-color: white;
 }
 
 .dropdown {
@@ -35,11 +33,11 @@ footer {
     overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.dropdown, .dropbtn {
     font-size: 16px;
     border: inherit;
     outline: inherit;
-    color: grey;
+    color: grey !important;
     font-family: 'Rajdhani', sans-serif;
     float: left;
     text-align: center;
@@ -55,7 +53,7 @@ footer {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    margin-top: 50px;
+    margin-top: 45.5px;
 }
 
 .dropdown-content a {
@@ -73,6 +71,10 @@ footer {
 .dropbtn {
     display: block;
     position: relative;
+}
+
+.dropbtn:hover {
+    background-color: #ddd !important;
 }
 
 .show {

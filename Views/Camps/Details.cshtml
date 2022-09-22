@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Details";
 }
-
+<div class="contents">
 <h1>Details</h1>
 
 <div>
@@ -42,38 +42,48 @@
         </dd>
     </dl>
     
-    <dl>
-        <div>
-            Staff
-        </div>
-        <div>
-            @{
-                foreach (var item in Model.Counselors)
-                {
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Counselor.FirstName)
-                    </dt>
-                    <dd>
+    <hr/>
+
+    <table>
+        <thead>
+        <h4>Staff</h4>
+        </thead>
+        <tbody>
+        <tr>
+            <th>
+                First name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                Tel
+            </th>
+        </tr>
+        @{
+            foreach (var item in Model.Counselors)
+            {
+                <tr>
+                    <td>
                         @item.FirstName
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Counselor.LastName)
-                    </dt>
-                    <dd>
+                    </td>
+                    <td>
                         @item.LastName
-                    </dd>
-                    <dt>
-                        @Html.DisplayNameFor(model => model.Counselor.Tel)
-                    </dt>
-                    <dd>
+                    </td>
+                    <td>
                         @item.Tel
-                    </dd>
-                }
+                    </td>
+                </tr>
             }
-        </div>
-    </dl>
+        }
+        </tbody>
+    </table>
+    <br/>
+    <hr/>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Camp.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
+</div>
 </div>

@@ -1,0 +1,91 @@
+﻿@model ViewModel
+@{
+}
+
+
+<div class="container contents">
+    <div class="row">
+        <h1>Counselors</h1>
+        <div class="col">
+            <table>
+                <tbody>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Tel
+                    </th>
+                    <th>
+                        Camps
+                    </th>
+                    <th>
+
+                    </th>
+                </tr>
+
+                @foreach (var item in Model.Counselors)
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName @item.LastName
+                        </td>
+                        <td>
+                            @item.Tel
+                        </td>
+                        <td>
+                            @foreach (var staff in Model.CompleteStaff.Where(x => x.Counselor == item.Id))
+                            {
+                                var camp = Model.Camps.FirstOrDefault(x => x.Id == staff.Camp);
+                                if (staff.IsInCharge)
+                                {
+                                    <div>@camp.Name Leader</div>
+                                }
+                                else
+                                {
+                                    <div>@camp.Name</div>
+                                }
+                            }
+                        </td>
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+                        {
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">
+                                    <span title="edit profile" class="material-symbols-outlined">
+                                        edit
+                                    </span>
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id">
+                                    <span title="profile details" class="material-symbols-outlined">
+                                        info
+                                    </span>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id">
+                                    <span title="delete profile" class="material-symbols-outlined">
+                                        delete
+                                    </span>
+                                </a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.Id">
+                                    <span title="profile details" class="material-symbols-outlined">
+                                        info
+                                    </span>
+                                </a>
+                            </td>
+                        }
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <img src="~/Media/people.jpg" width="650"/>
+        </div>
+    </div>
+    
+</div>

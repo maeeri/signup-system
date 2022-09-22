@@ -21,11 +21,15 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Councelors
-        public async Task<IActionResult> Index()
+        [Authorize(Roles = "Staff")]
+        public async Task<IActionResult> Counselors()
         {
-            return _context.Counselor != null ?
-                        View(await _context.Counselor.ToListAsync()) :
-                        Problem("Entity set 'ApplicationDbContext.Councelor'  is null.");
+            var viewModel = new ViewModel();
+            viewModel.Counselors = await _context.Counselor.ToListAsync();
+            viewModel.CompleteStaff = await _context.Staff.ToListAsync();
+            viewModel.Camps = await _context.Camp.ToListAsync();
+
+            return View(viewModel);
         }
 
         // GET: Councelors/Details/5
@@ -59,20 +63,14 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddCounselor(/*[Bind("CompleteStaff,Counselor,Camps")]*/ ViewModel viewModel)
+        public async Task<ActionResult> AddCounselor([Bind("Staff,Counselor")] ViewModel viewModel)
         {
             try
             {
-                _context.Counselor!.Add(viewModel.Counselor!);
-                var tempStaff = new List<Staff>();
+                _context.Counselor?.Add(viewModel.Counselor!);
+                if (viewModel.Staff != null) 
+                    _context.Staff?.Add(viewModel.Staff);
 
-                foreach (var staff in viewModel.CompleteStaff!)
-                {
-                    if (staff != null)
-                        tempStaff.Add(staff);
-                }
-
-                _context.Staff!.AddRange(tempStaff);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
             }

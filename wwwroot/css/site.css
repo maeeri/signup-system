@@ -18,6 +18,8 @@ html {
 body {
     margin-bottom: 60px;
     margin-top: 60px;
+    background-image: url('../Media/nature-2512898_1920.jpg');
+    font-family: 'Rajdhani', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,4 +43,39 @@ a:hover {
     margin-top: 10%;
     margin-bottom: 10%;
     padding: 1.5%;
+}
+
+button, .btn {
+    border: none;
+    background-color: #81368a;
+    color: white;
+    border-radius: 4px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.btn:hover {
+    background-color: #340b54;
+}
+
+.form-group {
+    font-size: 1.15rem;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+td, th {
+    margin: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    border: 1px solid lightgrey;
+}
+
+#trigger0, #trigger10 {
+    background-color: grey;
+}
+
+#trigger0:hover, #trigger10:hover {
+    background-color: #63437a;
+    color: white;
 }

@@ -6,12 +6,3 @@ input {
     margin: 2px;
 }
 
-button, .btn {
-    border: none;
-    background-color: #81368a;
-    color: white;
-    border-radius: 3%;
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-

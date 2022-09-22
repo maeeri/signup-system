@@ -4,7 +4,7 @@
     ViewData["Title"] = "Add a councelor";
 }
 
-
+<div class="contents">
 <h1>Add a councelor</h1>
 <hr/>
 <div class="row">
@@ -54,15 +54,15 @@
                         
                         if (Model.Camps != null)
                         {
-                            var i = 0;
                             foreach (var camp in Model.Camps)
                             {
-                                <input type="radio" value="@camp.Id" asp-for="CompleteStaff![i].Camp"/>
-                                <label>@camp.Name @camp.Start.Date - @camp.End.Date</label>
-                                <input type="checkbox" asp-for="CompleteStaff![i].IsInCharge"/>
+                                <input type="radio" value="@camp.Id" asp-for="Staff.Camp"/>
+                                <label>@camp.Name @camp.Start.ToString("d.M.yyyy") - @camp.End.ToString("d.M.yyyy")</label>
+                                <br/>
+                                <input type="checkbox" asp-for="Staff.IsInCharge"/>
                                 <label>Head counselor for the camp</label>
                                 <br>
-                                i++;
+                                
                             }
                         }
                     }
@@ -73,4 +73,8 @@
             </div>
         </form>
     </div>
+    <div class="col">
+        <img src="~/Media/nature-2512898_1920.jpg" width="750"/>
+    </div>
+</div>
 </div>

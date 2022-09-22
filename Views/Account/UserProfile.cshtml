@@ -1,7 +1,8 @@
 ﻿@model UserProfile
 
+
 <section class="vh-100" style="background-color: #9de2ff;">
-    <div class="container py-5 h-100">
+    <div class="container py-5 h-100 contents">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-md-9 col-lg-7 col-xl-5">
                 <div class="card" style="border-radius: 15px;">
@@ -9,17 +10,17 @@
                         <div class="d-flex text-black">
                             <div class="flex-shrink-0">
                                 <img src="@Model.Avatar"
-                                     alt="" class="img-fluid"
-                                     style="width: 180px; border-radius: 10px;">
+                                     width="200"
+                                     id="output">
                             </div>
                             <div class="flex-grow-1 ms-3">
                                 <h5 class="mb-1">@Model.Name</h5>
-                                <p class="mb-2 pb-1" style="color: #2b2a2a;">@Model.Email</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
