@@ -117,4 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="camp" xml:space="preserve">
+    <value>Leiri</value>
+  </data>
+  <data name="capacity" xml:space="preserve">
+    <value>Leirin koko</value>
+  </data>
+  <data name="create" xml:space="preserve">
+    <value>Lisää leiri</value>
+  </data>
+  <data name="end" xml:space="preserve">
+    <value>Loppuu</value>
+  </data>
+  <data name="list" xml:space="preserve">
+    <value>Leirilista</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>Sijainti</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Alkaa</value>
+  </data>
 </root>
