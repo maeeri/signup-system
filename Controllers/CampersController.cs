@@ -43,28 +43,6 @@ namespace SignUpProject.Controllers
             return View(camper);
         }
 
-        // GET: Campers/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Campers/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,StreetAddress,PostalCode,City,DoB,Guardian")] Camper camper)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(camper);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(camper);
-        }
-
         // GET: Campers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -155,7 +133,7 @@ namespace SignUpProject.Controllers
 
         private bool CamperExists(int id)
         {
-          return _context.Camper.Any(e => e.Id == id);
+            return _context.Camper.Any(e => e.Id == id);
         }
     }
 }

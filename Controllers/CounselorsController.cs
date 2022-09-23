@@ -68,8 +68,13 @@ namespace SignUpProject.Controllers
             try
             {
                 _context.Counselor?.Add(viewModel.Counselor!);
-                if (viewModel.Staff != null) 
+                _context.SaveChanges();
+
+                if (viewModel.Staff != null)
+                {
+                    viewModel.Staff.Counselor = viewModel.Counselor!.Id;
                     _context.Staff?.Add(viewModel.Staff);
+                }
 
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
@@ -127,7 +132,7 @@ namespace SignUpProject.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Counselors));
             }
             return View(councelor);
         }
@@ -166,7 +171,7 @@ namespace SignUpProject.Controllers
             }
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool CouncelorExists(int id)

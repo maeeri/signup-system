@@ -90,7 +90,11 @@ td, th {
 
 img {
     display: inline-block;
-    width: 100%;
     max-width: 750px;
-    height: 100%;
+    width: auto;
+    height: auto;
+}
+
+#logo {
+    width: 100px;
 }
