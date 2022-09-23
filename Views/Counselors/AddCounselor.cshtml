@@ -8,7 +8,7 @@
 <h1>Add a councelor</h1>
 <hr/>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-sm-12 col-lg-6">
         <form asp-action="AddCounselor">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -49,7 +49,7 @@
             <div class="form-group">
                 Camps
                 <div class="form-group">
-                    <label asp-for="Camp!.Id" class="control-label">Select the camps</label><br/>
+                    <label asp-for="Camp!.Id" class="control-label">Select the camp</label><br/><br/>
                     @{
                         
                         if (Model.Camps != null)
@@ -61,8 +61,8 @@
                                 <br/>
                                 <input type="checkbox" asp-for="Staff.IsInCharge"/>
                                 <label>Head counselor for the camp</label>
-                                <br>
-                                
+                                <br/>
+                                <br/>
                             }
                         }
                     }

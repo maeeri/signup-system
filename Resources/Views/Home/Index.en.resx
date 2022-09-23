@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="first" xml:space="preserve">
+    <value>This is a happy place, little squirrels live here and play. Trees live in your fan brush, but you have to scare them out. You can do anything here - the only pre-requisite is that it makes you happy. You create the dream - then you bring it into your world. See there, told you that would be easy.</value>
+  </data>
+  <data name="fourth" xml:space="preserve">
+    <value>Poor old tree. How to paint. That's easy. What to paint. That's much harder. You can do anything here. So don't worry about it. Everyone needs a friend. Friends are the most valuable things in the world. The shadows are just like the highlights, but we're going in the opposite direction.</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home page</value>
+  </data>
   <data name="new welcome" xml:space="preserve">
     <value>Welcome!</value>
+  </data>
+  <data name="second" xml:space="preserve">
+    <value>We'll play with clouds today. Anything you want to do you can do here. Now let's put some happy little clouds in here. Maybe there was an old trapper that lived out here and maybe one day he went to check his beaver traps, and maybe he fell into the river and drowned. Use absolutely no pressure. Just like an angel's wing.</value>
+  </data>
+  <data name="third" xml:space="preserve">
+    <value>The man who does the best job is the one who is happy at his job. I started painting as a hobby when I was little. I didn't know I had any talent. I believe talent is just a pursued interest. Anybody can do what I do. Just make a decision and let it go.</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Camp Signup Project</value>

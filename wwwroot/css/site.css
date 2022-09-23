@@ -87,3 +87,10 @@ td, th {
     margin: 2px;
     color: grey;
 }
+
+img {
+    display: inline-block;
+    width: 100%;
+    max-width: 750px;
+    height: 100%;
+}

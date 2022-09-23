@@ -1,18 +1,21 @@
 ﻿@model SignUpProject.Models.ViewModel
 
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
 @{
-    ViewData["Title"] = "SignUp";
+    ViewData["Title"] = Localizer["signup"];
 }
 <div class="contents">
-<h1>Sign Up</h1>
+<h1>@Localizer["signup"]</h1>
 
 <hr/>
 <div class="row">
-<div class="col-md-4">
+<div class="col-xl-4">
 <form asp-action="SignUp">
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="form-group">
-    <label asp-for="Camp.Id" class="control-label">Select the camp you want to attend</label><br/>
+    <label asp-for="Camp.Id" class="control-label">@Localizer["select"]</label><br/>
     <div class="form-group">
         @{
             foreach (var camp in Model.Camps)
@@ -28,266 +31,263 @@
     </div>
 </div>
 <div class="form-group">
-    <label asp-for="Camper!.FirstName" class="control-label"></label>
+    <label asp-for="Camper!.FirstName" class="control-label">@Localizer["firstname"]</label>
     <input asp-for="Camper!.FirstName" class="form-control"/>
     <span asp-validation-for="Camper!.FirstName" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Camper!.LastName" class="control-label"></label>
+    <label asp-for="Camper!.LastName" class="control-label">@Localizer["lastname"]</label>
     <input asp-for="Camper!.LastName" class="form-control"/>
     <span asp-validation-for="Camper!.LastName" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Camper.StreetAddress" class="control-label"></label>
+    <label asp-for="Camper.StreetAddress" class="control-label">@Localizer["street"]</label>
     <input asp-for="Camper.StreetAddress" class="form-control"/>
     <span asp-validation-for="Camper.StreetAddress" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Camper.PostalCode" class="control-label"></label>
+    <label asp-for="Camper.PostalCode" class="control-label">@Localizer["postcode"]</label>
     <input asp-for="Camper.PostalCode" class="form-control"/>
     <span asp-validation-for="Camper.PostalCode" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Camper.City" class="control-label"></label>
+    <label asp-for="Camper.City" class="control-label">@Localizer["city"]</label>
     <input asp-for="Camper.City" class="form-control"/>
     <span asp-validation-for="Camper.City" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Camper.DoB" class="control-label"></label>
+    <label asp-for="Camper.DoB" class="control-label">@Localizer["dob"]</label>
     <input type="date" asp-for="Camper.DoB" class="form-control"/>
     <span asp-validation-for="Camper.DoB" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Guardian.Name" class="control-label"></label>
+    <label asp-for="Guardian.Name" class="control-label">@Localizer["guardianname"]</label>
     <input asp-for="Guardian.Name" class="form-control"/>
     <span asp-validation-for="Guardian.Name" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Guardian.Email" class="control-label"></label>
+    <label asp-for="Guardian.Email" class="control-label">@Localizer["email"]</label>
     <input asp-for="Guardian.Email" class="form-control"/>
     <span asp-validation-for="Guardian.Email" class="text-danger"></span>
 </div>
 <div class="form-group">
-    <label asp-for="Guardian.Tel" class="control-label"></label>
+    <label asp-for="Guardian.Tel" class="control-label">@Localizer["tel"]</label>
     <input asp-for="Guardian.Tel" class="form-control"/>
     <span asp-validation-for="Guardian.Tel" class="text-danger"></span>
 </div>
 <div>
     <div class="form-group">
-        <label asp-for="CampPeople.RideIn" class="control-label">Bus to the camp</label>
+        <label asp-for="CampPeople.RideIn" class="control-label">@Localizer["busto"]</label>
         <span asp-validation-for="CampPeople.RideIn" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="radio" asp-for="CampPeople.RideIn" name="CampPeople.RideIn" value="true"/>
-        <label>yes</label><br/>
+        <label>@Localizer["yes"]</label><br/>
         <input type="radio" asp-for="CampPeople.RideIn" name="CampPeople.RideIn" value="false"/>
-        <label>no</label><br/>
+        <label>@Localizer["no"]</label><br/>
     </div>
 </div>
 <div>
     <div class="form-group">
-        <label asp-for="CampPeople.RideOut" class="control-label">Bus to the camp</label>
+        <label asp-for="CampPeople.RideOut" class="control-label">@Localizer["busfrom"]</label>
         <span asp-validation-for="CampPeople.RideOut" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="true"/>
-        <label>yes</label><br/>
+        <label>@Localizer["yes"]</label><br/>
         <input type="radio" asp-for="CampPeople.RideOut" name="CampPeople.RideOut" value="false"/>
-        <label>no</label><br/>
+        <label>@Localizer["no"]</label><br/>
     </div>
 </div>
 <div>
-    <button id="trigger0">Add allergy info</button>
+    <button id="trigger0">@Localizer["addallergy"]</button>
 </div>
-<div>
-    <button id="trigger10">Add medication info</button>
-</div>
-<div id="allergies0" style="display: none">
+
+<div id="allergies0" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Allergies[0].Item" class="control-label">Allergy</label>
+        <label asp-for="Allergies[0].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[0].Item" class="form-control"/>
         <span asp-validation-for="Allergies[0].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="1">
-        <label asp-for="Allergies[0].Severity">High</label><br>
+        <label asp-for="Allergies[0].Severity">@Localizer["high"]</label><br>
         <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="2">
-        <label asp-for="Allergies[0].Severity">Manageable with medication</label><br>
+        <label asp-for="Allergies[0].Severity">@Localizer["medicated"]</label><br>
         <input type="radio" asp-for="Allergies[0].Severity" name="Allergies[0].Severity" value="3">
-        <label asp-for="Allergies[0].Severity">Nah</label>
+        <label asp-for="Allergies[0].Severity">@Localizer["mild"]</label>
     </div>
     <div>
-        <button id="trigger1">Add more</button>
+                        <button id="trigger1">@Localizer["addmoreall"]</button>
     </div>
 </div>
-<div id="allergies1" style="display: none">
+                <div id="allergies1" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Allergies[1].Item" class="control-label">Allergy</label>
+        <label asp-for="Allergies[1].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[1].Item" class="form-control"/>
         <span asp-validation-for="Allergies[1].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
         <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="1">
-        <label asp-for="Allergies[1].Severity">High</label><br>
+        <label asp-for="Allergies[1].Severity">@Localizer["high"]</label><br>
         <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="2">
-        <label asp-for="Allergies[1].Severity">Manageable with medication</label><br>
+        <label asp-for="Allergies[1].Severity">@Localizer["medicated"]</label><br>
         <input type="radio" asp-for="Allergies[1].Severity" name="Allergies[1].Severity" value="3">
-        <label asp-for="Allergies[1].Severity">Nah</label>
+        <label asp-for="Allergies[1].Severity">@Localizer["mild"]</label>
     </div>
     <div>
-        <button id="trigger2">Add more</button>
+                        <button id="trigger2">@Localizer["addmoreall"]</button>
     </div>
 </div>
-<div id="allergies2" style="display: none">
+<div id="allergies2" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Allergies[2].Item" class="control-label">Allergy</label>
+        <label asp-for="Allergies[2].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[2].Item" class="form-control"/>
         <span asp-validation-for="Allergies[2].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="1">
-        <label asp-for="Allergies[2].Severity">High</label><br>
-        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="2">
-        <label asp-for="Allergies[2].Severity">Manageable with medication</label><br>
-        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[2].Severity" value="3">
-        <label asp-for="Allergies[2].Severity">Nah</label>
-    </div>
-    <div>
-        <button id="trigger3">Add more</button>
+        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[1].Severity" value="1">
+        <label asp-for="Allergies[2].Severity">@Localizer["high"]</label><br>
+        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[1].Severity" value="2">
+        <label asp-for="Allergies[2].Severity">@Localizer["medicated"]</label><br>
+        <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[1].Severity" value="3">
+        <label asp-for="Allergies[2].Severity">@Localizer["mild"]</label>
+        <div>
+                            <button id="trigger3">@Localizer["addmoreall"]</button>
+        </div>
     </div>
 </div>
-<div id="allergies3" style="display: none">
+                <div id="allergies3" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Allergies[3].Item" class="control-label">Allergy</label>
+        <label asp-for="Allergies[3].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[3].Item" class="form-control"/>
         <span asp-validation-for="Allergies[3].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="1">
-        <label asp-for="Allergies[3].Severity">High</label><br>
-        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="2">
-        <label asp-for="Allergies[3].Severity">Manageable with medication</label><br>
-        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[3].Severity" value="3">
-        <label asp-for="Allergies[3].Severity">Nah</label>
-    </div>
-    <div>
-        <button id="trigger4">Add more</button>
+        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[1].Severity" value="1">
+        <label asp-for="Allergies[3].Severity">@Localizer["high"]</label><br>
+        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[1].Severity" value="2">
+        <label asp-for="Allergies[3].Severity">@Localizer["medicated"]</label><br>
+        <input type="radio" asp-for="Allergies[3].Severity" name="Allergies[1].Severity" value="3">
+        <label asp-for="Allergies[3].Severity">@Localizer["mild"]</label>
+        <div>
+            <button id="trigger4">@Localizer["addmoreall"]</button>
+        </div>
     </div>
 </div>
-<div id="allergies4" style="display: none">
+<div id="allergies4" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Allergies[4].Item" class="control-label">Allergy</label>
+        <label asp-for="Allergies[4].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[4].Item" class="form-control"/>
         <span asp-validation-for="Allergies[4].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="1">
-        <label asp-for="Allergies[4].Severity">High</label><br>
-        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="2">
-        <label asp-for="Allergies[4].Severity">Manageable with medication</label><br>
-        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[4].Severity" value="3">
-        <label asp-for="Allergies[4].Severity">Nah</label>
+        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[1].Severity" value="1">
+        <label asp-for="Allergies[4].Severity">@Localizer["high"]</label><br>
+        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[1].Severity" value="2">
+        <label asp-for="Allergies[4].Severity">@Localizer["medicated"]</label><br>
+        <input type="radio" asp-for="Allergies[4].Severity" name="Allergies[1].Severity" value="3">
+        <label asp-for="Allergies[4].Severity">@Localizer["mild"]</label>
     </div>
 </div>
-<div id="medication0" style="display: none">
-    <div class="form-group>
-        <label asp-for="Medications[0].Item" class="control-label"></label>
+                <div>
+                    <button id="trigger10">@Localizer["addmedication"]</button>
+                </div>
+                <div id="medication0" class="" style="display: none">
+    <div class="form-group">
+        <label asp-for="Medications[0].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[0].Item" class="form-control"/>
         <span asp-validation-for="Medications[0].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[0].Instructions" class="control-label"></label>
+        <label asp-for="Medications[0].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[0].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[0].Instructions" class="text-danger"></span>
     </div>
     <div>
-        <button id="trigger5">Add more</button>
+                        <button id="trigger5">@Localizer["addmoremed"]</button>
     </div>
 </div>
-<div id="medication1" style="display: none">
+<div id="medication1" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Medications[1].Item" class="control-label"></label>
+        <label asp-for="Medications[1].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[1].Item" class="form-control"/>
         <span asp-validation-for="Medications[1].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[1].Instructions" class="control-label"></label>
+        <label asp-for="Medications[1].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[1].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[1].Instructions" class="text-danger"></span>
     </div>
     <div>
-        <button id="trigger6">Add more</button>
+                        <button id="trigger6">@Localizer["addmoremed"]</button>
     </div>
 </div>
-<div id="medication2" style="display: none">
+                <div id="medication2" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Medications[2].Item" class="control-label"></label>
+        <label asp-for="Medications[2].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[2].Item" class="form-control"/>
         <span asp-validation-for="Medications[2].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[2].Instructions" class="control-label"></label>
+        <label asp-for="Medications[2].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[2].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[2].Instructions" class="text-danger"></span>
     </div>
     <div>
-        <button id="trigger7">Add more</button>
+                        <button id="trigger7">@Localizer["addmoremed"]</button>
     </div>
 </div>
-<div id="medication3" style="display: none">
+                <div id="medication3" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Medications[3].Item" class="control-label"></label>
+        <label asp-for="Medications[3].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[3].Item" class="form-control"/>
         <span asp-validation-for="Medications[3].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[3].Instructions" class="control-label"></label>
+        <label asp-for="Medications[3].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[3].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[3].Instructions" class="text-danger"></span>
     </div>
     <div>
-        <button id="trigger8">Add more</button>
+                        <button id="trigger8">@Localizer["addmoremed"]</button>
     </div>
 </div>
-<div id="medication4" style="display: none">
+                <div id="medication4" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Medications[4].Item" class="control-label"></label>
+        <label asp-for="Medications[4].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[4].Item" class="form-control"/>
         <span asp-validation-for="Medications[4].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[4].Instructions" class="control-label"></label>
+        <label asp-for="Medications[4].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[4].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[4].Instructions" class="text-danger"></span>
     </div>
     <div>
-        <button id="trigger9">Add more</button>
+                        <button id="trigger9">@Localizer["addmoremed"]</button>
     </div>
 </div>
-<div id="medication5" style="display: none">
+                <div id="medication5" class="" style="display: none">
     <div class="form-group">
-        <label asp-for="Medications[5].Item" class="control-label"></label>
+        <label asp-for="Medications[5].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[5].Item" class="form-control"/>
-        <span asp-validation-for="Medications[2].Item" class="text-danger"></span>
+        <span asp-validation-for="Medications[5].Item" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Medications[5].Instructions" class="control-label"></label>
+        <label asp-for="Medications[5].Instructions" class="control-label">@Localizer["instructions"]</label>
         <input asp-for="Medications[5].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[5].Instructions" class="text-danger"></span>
     </div>
 </div>
 <div class="form-group">
-    <input type="submit" value="SignUp" class="btn btn-primary"/>
+                    <input type="submit" value="@Localizer["signup"]" class="btn btn-primary" />
 </div>
 </form>
 </div>
 <div class="col">
     <img src="~/Media/mountains.jpg" width="750"/>
 </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 </div>
 

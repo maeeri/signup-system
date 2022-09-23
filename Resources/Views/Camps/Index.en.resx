@@ -117,73 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aitem" xml:space="preserve">
-    <value>Ruokarajoite</value>
+  <data name="add" xml:space="preserve">
+    <value>add a camp</value>
   </data>
-  <data name="allergy" xml:space="preserve">
-    <value>Ruokavalio</value>
+  <data name="capacity" xml:space="preserve">
+    <value>Capacity</value>
   </data>
-  <data name="busfrom" xml:space="preserve">
-    <value>Bussikuljetus leiriltä</value>
+  <data name="delete" xml:space="preserve">
+    <value>delete</value>
   </data>
-  <data name="busto" xml:space="preserve">
-    <value>Bussikuljetus leirille</value>
+  <data name="details" xml:space="preserve">
+    <value>details</value>
   </data>
-  <data name="camp" xml:space="preserve">
-    <value>Leiri</value>
+  <data name="edit" xml:space="preserve">
+    <value>edit</value>
   </data>
-  <data name="city" xml:space="preserve">
-    <value>Postitoimipaikka</value>
+  <data name="end" xml:space="preserve">
+    <value>End</value>
   </data>
-  <data name="dob" xml:space="preserve">
-    <value>Syntymäaika</value>
+  <data name="index" xml:space="preserve">
+    <value>Camps</value>
   </data>
-  <data name="email" xml:space="preserve">
-    <value>Huoltajan sähköposti</value>
+  <data name="location" xml:space="preserve">
+    <value>Location</value>
   </data>
-  <data name="firstname" xml:space="preserve">
-    <value>Etunimi</value>
+  <data name="name" xml:space="preserve">
+    <value>Name</value>
   </data>
-  <data name="guardianname" xml:space="preserve">
-    <value>Huoltajan nimi</value>
-  </data>
-  <data name="high" xml:space="preserve">
-    <value>Korkea (vältettävä kokonaan)</value>
-  </data>
-  <data name="instructions" xml:space="preserve">
-    <value>Anto-ohjeet</value>
-  </data>
-  <data name="lastname" xml:space="preserve">
-    <value>Sukunimi</value>
-  </data>
-  <data name="medicated" xml:space="preserve">
-    <value>Hallittavissa lääkityksellä</value>
-  </data>
-  <data name="medication" xml:space="preserve">
-    <value>Lääkitys</value>
-  </data>
-  <data name="mild" xml:space="preserve">
-    <value>Matala</value>
-  </data>
-  <data name="mitem" xml:space="preserve">
-    <value>Lääke</value>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>Ei</value>
-  </data>
-  <data name="postcode" xml:space="preserve">
-    <value>Postinumero</value>
-  </data>
-  <data name="severity" xml:space="preserve">
-    <value>Herkkyys ruoka-aineelle</value>
-  </data>
-  <data name="street" xml:space="preserve">
-    <value>Katuosoite</value>
-  </data>
-  <data name="tel" xml:space="preserve">
-    <value>Huoltajan puhelinnumero</value>
-  </data>
-  <data name="yes" xml:space="preserve">
-    <value>Kyllä</value>
+  <data name="start" xml:space="preserve">
+    <value>Start</value>
   </data>
 </root>
