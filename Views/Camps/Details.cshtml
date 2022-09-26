@@ -61,20 +61,24 @@
             </th>
         </tr>
         @{
-            foreach (var item in Model.Counselors)
+            if (Model.Counselors.Count > 0)
             {
-                <tr>
-                    <td>
-                        @item.FirstName
-                    </td>
-                    <td>
-                        @item.LastName
-                    </td>
-                    <td>
-                        @item.Tel
-                    </td>
-                </tr>
+                foreach (var item in Model.Counselors)
+                    {
+                        <tr>
+                            <td>
+                                @item.FirstName
+                            </td>
+                            <td>
+                                @item.LastName
+                            </td>
+                            <td>
+                                @item.Tel
+                            </td>
+                        </tr>
+                    }
             }
+            
         }
         </tbody>
     </table>

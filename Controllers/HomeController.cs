@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SignUpProject.Models;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using SignUpProject.Data;
 
 namespace SignUpProject.Controllers
 {

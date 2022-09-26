@@ -1,0 +1,34 @@
+﻿@using System.Text.Json
+@model SignUpProject.Models.ViewModel
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    ViewData["Title"] = Localizer["search"];
+}
+<link rel="stylesheet" href="~/css/SearchPage.css" asp-append-version="true" />
+<script type="text/javascript" src="~/js/SearchPage.js" asp-append-version="true" defer></script>
+
+<div class="container contents">
+    <div>
+        <div class="row">
+            <form id="query">
+                <input type="text" id="queryString" name="q" placeholder="@Localizer[""]" />
+                <input id="filterDataCamps" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Camps)" />
+                <input id="filterDataCampers" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Campers)" />
+                <input id="filterDataCounselors" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Counselors)" />
+                <input type="submit" id="searchSubmit" value="@Localizer["search"]"/>
+            </form>
+        </div>
+        <div class="row">
+            <ul id="searchContents">
+
+            </ul>
+
+        </div>
+        
+    </div>
+</div>
+
+

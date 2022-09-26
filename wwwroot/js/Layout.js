@@ -12,5 +12,4 @@ window.onclick = function (e) {
             stMenu.classList.remove("show");
         }
     }
-  
 }

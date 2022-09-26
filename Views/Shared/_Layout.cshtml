@@ -35,6 +35,8 @@
                                     <div class="dropdown-content" id="staffActions">
                                         <a class="dropdown-item" asp-area="" asp-controller="Camps" asp-action="Index">@Localizer["Camps"]</a>
                                         <a class="dropdown-item" asp-area="" asp-controller="Counselors" asp-action="Counselors">@Localizer["Staff"]</a>
+                                        <a class="dropdown-item" asp-area="" asp-controller="Data" asp-action="Search">@Localizer["Search"]</a>
+                                        
 
                                         @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
                                         {

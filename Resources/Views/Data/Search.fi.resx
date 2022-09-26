@@ -117,37 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Add a camp" xml:space="preserve">
-    <value>Add a camp</value>
-  </data>
-  <data name="Add a counselor" xml:space="preserve">
-    <value>Add a counselor</value>
-  </data>
-  <data name="Camp sign up" xml:space="preserve">
-    <value>Camp sign up</value>
-  </data>
-  <data name="Camps" xml:space="preserve">
-    <value>Camps</value>
-  </data>
-  <data name="Home" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>Logout</value>
-  </data>
-  <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="Search" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="Staff" xml:space="preserve">
-    <value>Staff</value>
-  </data>
-  <data name="Staff actions" xml:space="preserve">
-    <value>Staff actions</value>
+  <data name="search" xml:space="preserve">
+    <value>Haku</value>
   </data>
 </root>

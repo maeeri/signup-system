@@ -141,6 +141,9 @@
   <data name="Profile" xml:space="preserve">
     <value>Profiili</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Haku</value>
+  </data>
   <data name="Staff" xml:space="preserve">
     <value>Henkilökunta</value>
   </data>

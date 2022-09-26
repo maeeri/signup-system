@@ -10,11 +10,11 @@ using SignUpProject.Models;
 
 namespace SignUpProject.Controllers
 {
-    public class DatabaseController : Controller
+    public class DataController : Controller
     {
         private readonly SignUpProjectContext _context;
 
-        public DatabaseController(SignUpProjectContext context)
+        public DataController(SignUpProjectContext context)
         {
             _context = context;
         }
@@ -57,6 +57,16 @@ namespace SignUpProject.Controllers
         private bool StaffExists(int id)
         {
             return _context.Staff.Any(e => e.Id == id);
+        }
+
+        public async Task<IActionResult> Search()
+        {
+            var viewModel = new ViewModel();
+            viewModel.Campers = await _context.Camper.ToListAsync();
+            viewModel.Counselors = await _context.Counselor.ToListAsync();
+            viewModel.Camps = await _context.Camp.ToListAsync();
+
+            return View(viewModel);
         }
     }
 }
