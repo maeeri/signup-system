@@ -7,14 +7,17 @@ namespace SignUpProject.Models
     {
         [Key]
         public int Id { get; set; }
+        [Required(ErrorMessage = "Camp name is required")]
         public string? Name { get; set; }
+        [Required(ErrorMessage = "Camp location is required")]
         public string? Location { get; set; }
+        [Required(ErrorMessage = "Camp capacity is required")]
         public int Capacity { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Start date is required")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: d.M.yyyy}")]
         public DateTime Start { get; set; }
-        [Required]
+        [Required(ErrorMessage = "End date is required")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0: d.M.yyyy}")]
         public DateTime End { get; set; }

@@ -23,18 +23,21 @@ namespace SignUpProject.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "First name is required")]
         public string? FirstName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Last name is required")]
         public string? LastName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Email address is required")]
         [DataType(DataType.EmailAddress)]
         public string? Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Phone number is required")]
         [DataType(DataType.PhoneNumber)]
         public string? Tel { get; set; }
+        [Required(ErrorMessage = "Street address is required")]
         public string? StreetAddress { get; set; }
+        [Required(ErrorMessage = "Postal code is required")]
         public string? PostalCode { get; set; }
+        [Required(ErrorMessage = "City is required")]
         public string? City { get; set; }
     }
 }

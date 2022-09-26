@@ -117,22 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="campers" xml:space="preserve">
-    <value>Leiriläiset</value>
+  <data name="city" xml:space="preserve">
+    <value>City</value>
   </data>
-  <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+  <data name="City is required" xml:space="preserve">
+    <value>City is required</value>
   </data>
-  <data name="header" xml:space="preserve">
-    <value>Etsi leirejä, leiriläisiä ja ohjaajia</value>
+  <data name="email" xml:space="preserve">
+    <value>Email address</value>
   </data>
-  <data name="search" xml:space="preserve">
-    <value>Haku</value>
+  <data name="Email address is required" xml:space="preserve">
+    <value>Email address is required</value>
   </data>
-  <data name="search..." xml:space="preserve">
-    <value>Hae...</value>
+  <data name="First name is required" xml:space="preserve">
+    <value>First name is required</value>
   </data>
-  <data name="staff" xml:space="preserve">
-    <value>Ohjaajat</value>
+  <data name="firstname" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="Last name is required" xml:space="preserve">
+    <value>Last name is required</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="Phone number is required" xml:space="preserve">
+    <value>Phone number is required</value>
+  </data>
+  <data name="Postal code is required" xml:space="preserve">
+    <value>Postal code is required</value>
+  </data>
+  <data name="postcode" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="street" xml:space="preserve">
+    <value>Street address</value>
+  </data>
+  <data name="Street address is required" xml:space="preserve">
+    <value>Street address is required</value>
+  </data>
+  <data name="tel" xml:space="preserve">
+    <value>Phone number</value>
   </data>
 </root>

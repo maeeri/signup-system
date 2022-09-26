@@ -5,7 +5,9 @@ const filterDataCounselors = document.getElementById("filterDataCounselors").val
 const campsObj = JSON.parse(filterDataCamps)
 const campersObj = JSON.parse(filterDataCampers)
 const counselorsObj = JSON.parse(filterDataCounselors)
-const searchContents = document.getElementById("searchContents")
+const campsArea = document.getElementById("camps")
+const campersArea = document.getElementById("campers")
+const staffArea = document.getElementById("counselors")
 const searchSubmit = document.getElementById("searchSubmit")
 
 window.onload = () => {
@@ -14,21 +16,21 @@ window.onload = () => {
 });
 
     query.addEventListener('change', () => {
-        console.log("hello")
-        searchContents.innerHTML = ""
+        campsArea.innerHTML = ""
+        campersArea.innerHTML = ""
+        staffArea.innerHTML = ""
         let campsResult = campsObj.filter(x => x.Name.toLowerCase().includes(query.value.toLowerCase()));
         let campersResult = campersObj.filter(x => x.FirstName.toLowerCase().includes(query.value.toLowerCase()) || x.LastName.toLowerCase().includes(query.value.toLowerCase()));
         let counselorsResult = counselorsObj.filter(x => x.FirstName.toLowerCase().includes(query.value.toLowerCase()) || x.LastName.toLowerCase().includes(query.value.toLowerCase()));
         campsList(campsResult, "Camps");
-        peoplesList(campersResult, "Campers");
-        peoplesList(counselorsResult, "Counselors");
+        campersList(campersResult, "Campers");
+        counselorsList(counselorsResult, "Counselors");
     });
 
 }
 
 
 const campsList = (input, header) => {
-    createHeader(header);
     input.forEach(x => {
         let el = document.createElement("a")
         let li = document.createElement("li")
@@ -36,12 +38,11 @@ const campsList = (input, header) => {
 
         el.href = '/Camps/Details/' + x.Id
         el.innerHTML = x.Name
-        searchContents.appendChild(li)
+        campsArea.appendChild(li)
     });
 };
 
-const peoplesList = (input, header) => {
-    createHeader(header);
+const campersList = (input, header) => {
     input.forEach(x => {
         let el = document.createElement("a")
         let li = document.createElement("li")
@@ -49,7 +50,18 @@ const peoplesList = (input, header) => {
 
         el.href = `/${header}/Details/${x.Id}`
         el.innerHTML = x.FirstName + " " + x.LastName
-        searchContents.appendChild(li)
+        campersArea.appendChild(li)
+    });
+};
+const counselorsList = (input, header) => {
+    input.forEach(x => {
+        let el = document.createElement("a")
+        let li = document.createElement("li")
+        li.appendChild(el)
+
+        el.href = `/${header}/Details/${x.Id}`
+        el.innerHTML = x.FirstName + " " + x.LastName
+        staffArea.append(li)
     });
 };
 

@@ -11,23 +11,41 @@
 <script type="text/javascript" src="~/js/SearchPage.js" asp-append-version="true" defer></script>
 
 <div class="container contents">
+    <h1>@Localizer["header"]</h1>
+
     <div>
         <div class="row">
             <form id="query">
-                <input type="text" id="queryString" name="q" placeholder="@Localizer[""]" />
-                <input id="filterDataCamps" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Camps)" />
-                <input id="filterDataCampers" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Campers)" />
-                <input id="filterDataCounselors" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Counselors)" />
+                <input type="text" id="queryString" name="q" placeholder="@Localizer["search..."]"/>
+                <input id="filterDataCamps" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Camps)"/>
+                <input id="filterDataCampers" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Campers)"/>
+                <input id="filterDataCounselors" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Counselors)"/>
                 <input type="submit" id="searchSubmit" value="@Localizer["search"]"/>
             </form>
         </div>
         <div class="row">
-            <ul id="searchContents">
+            <div class="col">
+                    <h3>@Localizer["camps"]</h3>
+                    <ul id="camps">
 
-            </ul>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>@Localizer["campers"]</h3>
+                    <ul id="campers">
+
+                    </ul>
+                </div>
+                <div class="col">
+                    <h3>@Localizer["staff"]</h3>
+                    <ul id="counselors">
+
+                    </ul>
+                </div>
+            
 
         </div>
-        
+
     </div>
 </div>
 

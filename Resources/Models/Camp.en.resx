@@ -117,22 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="campers" xml:space="preserve">
-    <value>Leiriläiset</value>
+  <data name="Camp capacity is required" xml:space="preserve">
+    <value>Camp capacity is required</value>
   </data>
-  <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+  <data name="Camp location is required" xml:space="preserve">
+    <value>Camp location is required</value>
   </data>
-  <data name="header" xml:space="preserve">
-    <value>Etsi leirejä, leiriläisiä ja ohjaajia</value>
+  <data name="Camp name is required" xml:space="preserve">
+    <value>Camp name is required</value>
   </data>
-  <data name="search" xml:space="preserve">
-    <value>Haku</value>
+  <data name="capacity" xml:space="preserve">
+    <value>Camp capacity</value>
   </data>
-  <data name="search..." xml:space="preserve">
-    <value>Hae...</value>
+  <data name="end" xml:space="preserve">
+    <value>End date</value>
   </data>
-  <data name="staff" xml:space="preserve">
-    <value>Ohjaajat</value>
+  <data name="End date is required" xml:space="preserve">
+    <value>End date is required</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Camp name</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Start date</value>
+  </data>
+  <data name="Start date is required" xml:space="preserve">
+    <value>Start date is required</value>
   </data>
 </root>

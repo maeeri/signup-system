@@ -117,22 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="campers" xml:space="preserve">
-    <value>Leiriläiset</value>
+  <data name="city" xml:space="preserve">
+    <value>Postitoimipaikka</value>
   </data>
-  <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+  <data name="City is required" xml:space="preserve">
+    <value>Lisää postitoimipaikka</value>
   </data>
-  <data name="header" xml:space="preserve">
-    <value>Etsi leirejä, leiriläisiä ja ohjaajia</value>
+  <data name="email" xml:space="preserve">
+    <value>Sähköposti</value>
   </data>
-  <data name="search" xml:space="preserve">
-    <value>Haku</value>
+  <data name="Email address is required" xml:space="preserve">
+    <value>Lisää sähköpostiosoite</value>
   </data>
-  <data name="search..." xml:space="preserve">
-    <value>Hae...</value>
+  <data name="First name is required" xml:space="preserve">
+    <value>Lisää etunimi</value>
   </data>
-  <data name="staff" xml:space="preserve">
-    <value>Ohjaajat</value>
+  <data name="firstname" xml:space="preserve">
+    <value>Etunimi</value>
+  </data>
+  <data name="Last name is required" xml:space="preserve">
+    <value>Lisää sukunimi</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Sukunimi</value>
+  </data>
+  <data name="Phone number is required" xml:space="preserve">
+    <value>Lisää puhelinnumero</value>
+  </data>
+  <data name="Postal code is required" xml:space="preserve">
+    <value>Lisää postinumero</value>
+  </data>
+  <data name="postcode" xml:space="preserve">
+    <value>Postinumero</value>
+  </data>
+  <data name="street" xml:space="preserve">
+    <value>Katuosoite</value>
+  </data>
+  <data name="Street address is required" xml:space="preserve">
+    <value>Lisää katuosoite</value>
+  </data>
+  <data name="tel" xml:space="preserve">
+    <value>Puhelinnumero</value>
   </data>
 </root>
