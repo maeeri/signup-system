@@ -1,4 +1,6 @@
 ﻿@model SignUpProject.Models.ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
     ViewData["Title"] = "Details";
@@ -59,6 +61,9 @@
             <th>
                 Tel
             </th>
+            <th>
+
+            </th>
         </tr>
         @{
             if (Model.Counselors.Count > 0)
@@ -75,8 +80,73 @@
                             <td>
                                 @item.Tel
                             </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.Id">
+                                    <span title="@Localizer["details"]" class="material-symbols-outlined">
+                                        info
+                                    </span>
+                                </a>
+                            </td>
                         </tr>
                     }
+            }
+            
+        }
+        </tbody>
+    </table>
+    <br/>
+    <hr/>
+    <br/>
+    
+    <table>
+        <thead>
+        <h4>Campers</h4>
+        </thead>
+        <tbody>
+        <tr>
+            <th>
+                First name
+            </th>
+            <th>
+                Last name
+            </th>
+            <th>
+                Guardian name
+            </th>
+            <th>
+                Guardian tel
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        @{
+            if (Model.Campers.Count > 0)
+            {
+                foreach (var item in Model.Campers)
+                {
+                    <tr>
+                        <td>
+                            @item.FirstName
+                        </td>
+                        <td>
+                            @item.LastName
+                        </td>
+                        <td>
+                            @Model.Guardians.FirstOrDefault(x => x.Id == item.Guardian).Name
+                        </td>
+                        <td>
+                            @Model.Guardians.FirstOrDefault(x => x.Id == item.Guardian).Tel
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id">
+                                <span title="@Localizer["details"]" class="material-symbols-outlined">
+                                    info
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                }
             }
             
         }

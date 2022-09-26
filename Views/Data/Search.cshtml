@@ -20,30 +20,28 @@
                 <input id="filterDataCamps" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Camps)"/>
                 <input id="filterDataCampers" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Campers)"/>
                 <input id="filterDataCounselors" type="hidden" name="searchData" value="@JsonSerializer.Serialize(Model.Counselors)"/>
-                <input type="submit" id="searchSubmit" value="@Localizer["search"]"/>
+                <input style="display:none" type="submit" id="searchSubmit" value="@Localizer["search"]"/>
             </form>
         </div>
         <div class="row">
             <div class="col">
-                    <h3>@Localizer["camps"]</h3>
-                    <ul id="camps">
+                <button><h3 id="campTrigger">@Localizer["camps"]</h3></button>
+                <ul style="display: none" id="camps">
 
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>@Localizer["campers"]</h3>
-                    <ul id="campers">
+                </ul>
+            </div>
+            <div class="col">
+                <button><h3 id="camperTrigger">@Localizer["campers"]</h3></button>
+                <ul style="display:none" id="campers">
 
-                    </ul>
-                </div>
-                <div class="col">
-                    <h3>@Localizer["staff"]</h3>
-                    <ul id="counselors">
+                </ul>
+            </div>
+            <div class="col">
+                <button><h3 id="staffTrigger">@Localizer["staff"]</h3></button>
+                <ul style="display:none" id="counselors">
 
-                    </ul>
-                </div>
-            
-
+                </ul>
+            </div>
         </div>
 
     </div>

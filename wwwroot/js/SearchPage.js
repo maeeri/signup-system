@@ -9,6 +9,9 @@ const campsArea = document.getElementById("camps")
 const campersArea = document.getElementById("campers")
 const staffArea = document.getElementById("counselors")
 const searchSubmit = document.getElementById("searchSubmit")
+const campBtn = document.getElementById("campTrigger")
+const camperBtn = document.getElementById("camperTrigger")
+const staffBtn = document.getElementById("staffTrigger")
 
 window.onload = () => {
         searchSubmit.addEventListener("click", event => {
@@ -70,3 +73,33 @@ function createHeader(header) {
     h.innerHTML = header
     searchContents.appendChild(h)
 };
+
+campBtn.addEventListener('click', () => {
+    campsArea.classList.toggle('show')
+});
+
+camperBtn.addEventListener('click', () => {
+    campersArea.classList.toggle('show')
+});
+
+staffBtn.addEventListener('click', () => {
+    staffArea.classList.toggle('show')
+})
+
+window.onclick = function (e) {
+    if (!e.target.matches("#campTrigger")) {
+        if (campArea.classList.contains("show")) {
+            campArea.classList.remove("show");
+        }
+    }
+    if (!e.target.matches("#camperTrigger")) {
+        if (campersArea.classList.contains("show")) {
+            campersArea.classList.remove("show");
+        }
+    }
+    if (!e.target.matches("#staffTrigger")) {
+        if (cstaffArea.classList.contains("show")) {
+            staffArea.classList.remove("show");
+        }
+    }
+}

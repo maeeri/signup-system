@@ -49,14 +49,22 @@ namespace SignUpProject.Controllers
             }
 
             viewModel.Counselors = new List<Counselor>();
+            viewModel.CompleteStaff = await _context.Staff?.Where(x => x.Camp == id).ToListAsync()!;
+            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camp == id).ToListAsync();
+            viewModel.Campers = new List<Camper>();
 
-            viewModel.CompleteStaff = _context.Staff?.Where(x => x.Camp == id).ToList();
+            foreach (var campPeople in viewModel.AllCampPeople)
+            {
+                viewModel.Campers.Add(_context.Camper.FirstOrDefault(x => x.Id == campPeople.Camper)!);
+            }
+
+            viewModel.Guardians = await _context.Guardian.ToListAsync();
 
             if (viewModel.CompleteStaff != null)
                 foreach (var staff in viewModel.CompleteStaff)
                 {
                     viewModel.Counselors.Add(
-                        await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor));
+                        (await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor)!)!);
                 }
 
             return View(viewModel);
