@@ -34,3 +34,7 @@ button:hover {
     background-color: grey;
     color: white
 }
+
+.hide {
+    display: none;
+}
