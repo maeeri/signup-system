@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add" xml:space="preserve">
-    <value>Tallenna</value>
+    <value>Save</value>
   </data>
   <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+    <value>Camps</value>
   </data>
   <data name="city" xml:space="preserve">
-    <value>Postitoimipaikka</value>
+    <value>City</value>
   </data>
   <data name="email" xml:space="preserve">
-    <value>Sähköposti</value>
+    <value>Email</value>
   </data>
   <data name="firstname" xml:space="preserve">
-    <value>Etunimi</value>
+    <value>First name</value>
   </data>
   <data name="lastname" xml:space="preserve">
-    <value>Sukunimi</value>
+    <value>Surname</value>
   </data>
   <data name="lead" xml:space="preserve">
-    <value>Vastuuohjaaja</value>
+    <value>Lead counselor for the camp</value>
   </data>
   <data name="postcode" xml:space="preserve">
-    <value>Postinumero</value>
+    <value>Postal code</value>
   </data>
   <data name="select" xml:space="preserve">
-    <value>Valitse leiri</value>
+    <value>Select a camp</value>
   </data>
   <data name="street" xml:space="preserve">
-    <value>Katuosoite</value>
+    <value>Street address</value>
   </data>
   <data name="tel" xml:space="preserve">
-    <value>Puhelinnumero</value>
+    <value>Phone number</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Lisää ohjaajan tiedot</value>
+    <value>Add a counselor</value>
   </data>
 </root>

@@ -1,57 +1,61 @@
 ﻿@model SignUpProject.Models.ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    ViewData["Title"] = "Add a councelor";
+    ViewData["Title"] = Localizer["title"];
 }
 
 <div class="contents">
-<h1>Add a councelor</h1>
+    <h1>@Localizer["title"]</h1>
 <hr/>
 <div class="row">
     <div class="col-sm-12 col-lg-6 col-xl-5">
         <form asp-action="AddCounselor">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Counselor!.FirstName" class="control-label"></label>
+                    <label asp-for="Counselor!.FirstName" class="control-label">@Localizer["firstname"]</label>
                 <input asp-for="Counselor!.FirstName" class="form-control"/>
                 <span asp-validation-for="Counselor!.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.LastName" class="control-label"></label>
+                    <label asp-for="Counselor!.LastName" class="control-label">@Localizer["lastname"]</label>
                 <input asp-for="Counselor!.LastName" class="form-control"/>
                 <span asp-validation-for="Counselor!.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.Tel" class="control-label"></label>
+                    <label asp-for="Counselor!.Tel" class="control-label">@Localizer["tel"]</label>
                 <input asp-for="Counselor!.Tel" class="form-control"/>
                 <span asp-validation-for="Counselor!.Tel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.Email" class="control-label"></label>
+                    <label asp-for="Counselor!.Email" class="control-label">@Localizer["email"]</label>
                 <input asp-for="Counselor!.Email" class="form-control"/>
                 <span asp-validation-for="Counselor!.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.StreetAddress" class="control-label"></label>
+                    <label asp-for="Counselor!.StreetAddress" class="control-label">@Localizer["street"]</label>
                 <input asp-for="Counselor!.StreetAddress" class="form-control"/>
                 <span asp-validation-for="Counselor!.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.PostalCode" class="control-label"></label>
+                    <label asp-for="Counselor!.PostalCode" class="control-label">@Localizer["postcode"]</label>
                 <input asp-for="Counselor!.PostalCode" class="form-control"/>
                 <span asp-validation-for="Counselor!.PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor!.City" class="control-label"></label>
+                    <label asp-for="Counselor!.City" class="control-label">@Localizer["city"]</label>
                 <input asp-for="Counselor!.City" class="form-control"/>
                 <span asp-validation-for="Counselor!.City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                Camps
+                <br/>
+                <hr/>
+                <h5>@Localizer["camps"]</h5>
                 <div class="form-group">
-                    <label asp-for="Camp!.Id" class="control-label">Select the camp</label><br/><br/>
+                    <label asp-for="Camp!.Id" class="control-label">@Localizer["select"]</label><br/><br/>
                     @{
-                        
+
                         if (Model.Camps != null)
                         {
                             foreach (var camp in Model.Camps)
@@ -60,7 +64,7 @@
                                 <label>@camp.Name @camp.Start.ToString("d.M.yyyy") - @camp.End.ToString("d.M.yyyy")</label>
                                 <br/>
                                 <input type="checkbox" asp-for="Staff.IsInCharge"/>
-                                <label>Head counselor for the camp</label>
+                                <label>@Localizer["lead"]</label>
                                 <br/>
                                 <br/>
                             }
@@ -69,7 +73,7 @@
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Add councelor" class="btn btn-primary"/>
+                    <input type="submit" value="@Localizer["add"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
