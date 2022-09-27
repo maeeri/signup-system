@@ -1,23 +1,27 @@
 ﻿@model ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
 @{
+    ViewData["Title"] = Localizer["counselors"];
 }
 
 
 <div class="container contents">
     <div class="row">
-        <h1>Counselors</h1>
+        <h1>@Localizer["counselors"]</h1>
         <div class="col-sm-12 col-lg-6">
             <table style="width: 100%; height: 100%;">
                 <tbody>
                 <tr>
                     <th>
-                        Name
+                            @Localizer["name"]
                     </th>
                     <th>
-                        Tel
+                            @Localizer["tel"]
                     </th>
                     <th>
-                        Camps
+                            @Localizer["camps"]
                     </th>
                     <th>
 
@@ -51,17 +55,17 @@
                         {
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.Id">
-                                    <span title="edit profile" class="material-symbols-outlined">
+                                        <span title="@Localizer["edit"]" class="material-symbols-outlined">
                                         edit
                                     </span>
                                 </a>
                                 <a asp-action="Details" asp-route-id="@item.Id">
-                                    <span title="profile details" class="material-symbols-outlined">
+                                        <span title="@Localizer["details"]" class="material-symbols-outlined">
                                         info
                                     </span>
                                 </a>
                                 <a asp-action="Delete" asp-route-id="@item.Id">
-                                    <span title="delete profile" class="material-symbols-outlined">
+                                        <span title="@Localizer["delete"]" class="material-symbols-outlined">
                                         delete
                                     </span>
                                 </a>
@@ -71,7 +75,7 @@
                         {
                             <td>
                                 <a asp-action="Details" asp-route-id="@item.Id">
-                                    <span title="profile details" class="material-symbols-outlined">
+                                        <span title="@Localizer["details"]" class="material-symbols-outlined">
                                         info
                                     </span>
                                 </a>

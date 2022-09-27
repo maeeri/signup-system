@@ -117,25 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+  <data name="city" xml:space="preserve">
+    <value>Postitoimipaikka</value>
   </data>
-  <data name="counselors" xml:space="preserve">
-    <value>Ohjaajat</value>
-  </data>
-  <data name="delete" xml:space="preserve">
-    <value>poista profiili</value>
-  </data>
-  <data name="details" xml:space="preserve">
-    <value>lisätietoa</value>
+  <data name="counselor" xml:space="preserve">
+    <value>Ohjaaja</value>
   </data>
   <data name="edit" xml:space="preserve">
-    <value>muokkaa profiilia</value>
+    <value>Muokkaa profiilia</value>
   </data>
-  <data name="name" xml:space="preserve">
-    <value>Nimi</value>
+  <data name="email" xml:space="preserve">
+    <value>Sähköpostiosoite</value>
+  </data>
+  <data name="firstname" xml:space="preserve">
+    <value>Etunimi</value>
+  </data>
+  <data name="lastname" xml:space="preserve">
+    <value>Sukunimi</value>
+  </data>
+  <data name="list" xml:space="preserve">
+    <value>Ohjaajalista</value>
+  </data>
+  <data name="postcode" xml:space="preserve">
+    <value>Postinumero</value>
+  </data>
+  <data name="street" xml:space="preserve">
+    <value>Lähiosoite</value>
   </data>
   <data name="tel" xml:space="preserve">
     <value>Puhelinnumero</value>
+  </data>
+  <data name="title" xml:space="preserve">
+    <value>Profiili</value>
   </data>
 </root>

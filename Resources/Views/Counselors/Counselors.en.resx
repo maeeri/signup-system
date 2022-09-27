@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
+    <value>Camps</value>
   </data>
   <data name="counselors" xml:space="preserve">
-    <value>Ohjaajat</value>
+    <value>Staff</value>
   </data>
   <data name="delete" xml:space="preserve">
-    <value>poista profiili</value>
+    <value>delete profile</value>
   </data>
   <data name="details" xml:space="preserve">
-    <value>lisätietoa</value>
+    <value>profile details</value>
   </data>
   <data name="edit" xml:space="preserve">
-    <value>muokkaa profiilia</value>
+    <value>edit profile</value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>Nimi</value>
+    <value>Name</value>
   </data>
   <data name="tel" xml:space="preserve">
-    <value>Puhelinnumero</value>
+    <value>Phone number</value>
   </data>
 </root>
