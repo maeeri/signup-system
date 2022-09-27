@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="camp" xml:space="preserve">
-    <value>Leiri</value>
+    <value>Camp</value>
   </data>
   <data name="capacity" xml:space="preserve">
-    <value>Leirin koko</value>
+    <value>Capacity</value>
   </data>
   <data name="edit" xml:space="preserve">
-    <value>Muokkaus</value>
+    <value>Edit</value>
   </data>
   <data name="end" xml:space="preserve">
-    <value>Loppuu</value>
+    <value>End</value>
   </data>
   <data name="list" xml:space="preserve">
-    <value>Leirilista</value>
+    <value>Camp list</value>
   </data>
   <data name="location" xml:space="preserve">
-    <value>Sijainti</value>
+    <value>Location</value>
   </data>
   <data name="name" xml:space="preserve">
-    <value>Nimi</value>
+    <value>Name</value>
   </data>
   <data name="save" xml:space="preserve">
-    <value>Tallenna</value>
+    <value>Save</value>
   </data>
   <data name="start" xml:space="preserve">
-    <value>Alkaa</value>
+    <value>Start</value>
   </data>
 </root>
