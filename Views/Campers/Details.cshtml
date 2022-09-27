@@ -4,7 +4,7 @@
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    ViewData["Title"] = Localizer[""];
+    ViewData["Title"] = Localizer["details"];
 }
 <div class="contents">
 <h1>@Localizer["details"]</h1>
@@ -12,7 +12,7 @@
     <div class="row">
         
         <hr />
-        <div class="col">
+        <div class="col-sm-12 col-lg-6">
 
             <h4>@Localizer["camper"]</h4>
             
@@ -76,7 +76,7 @@
                 </tr>
                 <tr>
                         <td class="fw-bold">
-                        @Localizer["gaurdiantel"]
+                        @Localizer["guardiantel"]
                     </td>
                     <td>
                         @Html.DisplayFor(model => model.Guardian.Tel)
@@ -93,7 +93,7 @@
                 </tbody>
             </table>
         </div>
-        <div class="col">
+        <div class="col-sm-12 col-lg-6">
             <table>
                 <thead><h4>@Localizer["allergies"]</h4></thead>
                 <tbody>
@@ -147,7 +147,7 @@
     <div class="row">
         <div>
         <a asp-action="Edit" asp-route-id="@Model?.Camper.Id">@Localizer["edit"]</a> |
-        <a asp-action="Index">@Localizer["list"]</a>
+        <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a>
         </div>
     </div>
 </div>
