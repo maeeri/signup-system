@@ -40,7 +40,21 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            return View(camper);
+            var viewModel = new ViewModel();
+            viewModel.Camper = camper;
+            viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper.Guardian);
+            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Camps = new List<Camp>();
+
+            foreach (var campPeople in viewModel.AllCampPeople)
+            {
+                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == campPeople.Camp));
+            }
+
+            viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
+
+            return View(viewModel);
         }
 
         // GET: Campers/Edit/5

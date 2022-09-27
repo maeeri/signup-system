@@ -20,7 +20,7 @@ namespace SignUpProject.Controllers
             _context = context;
         }
 
-        // GET: Councelors
+        // GET: Counselors
         [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Counselors()
         {
@@ -32,7 +32,8 @@ namespace SignUpProject.Controllers
             return View(viewModel);
         }
 
-        // GET: Councelors/Details/5
+        // GET: Counselors/Details/5
+        [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -40,17 +41,28 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var councelor = await _context.Counselor
+            var counselor = await _context.Counselor
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (councelor == null)
+            if (counselor == null)
             {
                 return NotFound();
             }
 
-            return View(councelor);
+            var viewModel = new ViewModel();
+            viewModel.Counselor = counselor;
+            viewModel.CompleteStaff = await _context.Staff.Where(m => m.Counselor == id).ToListAsync();
+            viewModel.Camps = new List<Camp>();
+
+            foreach (var staff in viewModel.CompleteStaff)
+            {
+                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == staff.Camp));
+            }
+
+            return View(viewModel);
         }
 
-        // GET: Councelors/Create
+        // GET: Counselors/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult AddCounselor()
         {
             var viewModel = new ViewModel();
@@ -58,11 +70,12 @@ namespace SignUpProject.Controllers
             return View(viewModel);
         }
 
-        // POST: Councelors/Create
+        // POST: Counselors/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> AddCounselor([Bind("Staff,Counselor")] ViewModel viewModel)
         {
             try
@@ -86,7 +99,8 @@ namespace SignUpProject.Controllers
             }
         }
 
-        // GET: Councelors/Edit/5
+        // GET: Counselors/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -94,22 +108,29 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var councelor = await _context.Counselor.FindAsync(id);
-            if (councelor == null)
+            var counselor = await _context.Counselor.FindAsync(id);
+            if (counselor == null)
             {
                 return NotFound();
             }
-            return View(councelor);
+
+            var viewModel = new ViewModel();
+            viewModel.Counselor = counselor;
+            viewModel.CompleteStaff = await _context.Staff.Where(x => x.Counselor == id).ToListAsync();
+            viewModel.Camps = await _context.Camp.ToListAsync();
+
+            return View(viewModel);
         }
 
-        // POST: Councelors/Edit/5
+        // POST: Counselors/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Email,Tel,StreetAddress,PostalCode,City")] Counselor councelor)
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Edit(int id, [Bind("Counselor")] ViewModel viewModel)
         {
-            if (id != councelor.Id)
+            if (id != viewModel.Counselor.Id)
             {
                 return NotFound();
             }
@@ -118,12 +139,12 @@ namespace SignUpProject.Controllers
             {
                 try
                 {
-                    _context.Update(councelor);
+                    _context.Update(viewModel.Counselor);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CouncelorExists(councelor.Id))
+                    if (!CounselorExists(viewModel.Counselor.Id))
                     {
                         return NotFound();
                     }
@@ -134,10 +155,11 @@ namespace SignUpProject.Controllers
                 }
                 return RedirectToAction(nameof(Counselors));
             }
-            return View(councelor);
+            return View(viewModel);
         }
 
-        // GET: Councelors/Delete/5
+        // GET: Counselors/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Counselor == null)
@@ -145,36 +167,37 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var councelor = await _context.Counselor
+            var counselor = await _context.Counselor
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (councelor == null)
+            if (counselor == null)
             {
                 return NotFound();
             }
 
-            return View(councelor);
+            return View(counselor);
         }
 
-        // POST: Councelors/Delete/5
+        // POST: Counselors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Counselor == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.Councelor'  is null.");
             }
-            var councelor = await _context.Counselor.FindAsync(id);
-            if (councelor != null)
+            var counselor = await _context.Counselor.FindAsync(id);
+            if (counselor != null)
             {
-                _context.Counselor.Remove(councelor);
+                _context.Counselor.Remove(counselor);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction("Index", "Home");
         }
 
-        private bool CouncelorExists(int id)
+        private bool CounselorExists(int id)
         {
             return (_context.Counselor?.Any(e => e.Id == id)).GetValueOrDefault();
         }

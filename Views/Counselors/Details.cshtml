@@ -1,64 +1,121 @@
-﻿@model SignUpProject.Models.Counselor
+﻿@model SignUpProject.Models.ViewModel
 @inject IViewLocalizer Localizer
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
     ViewData["Title"] = Localizer["title"];
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="contents">
-<h1>@Localizer["title"] </h1>
+    <h1>@Localizer["title"] </h1>
 
-<div>
+    <div>
         <h4>@Localizer["counselor"]</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-                @Localizer["firstname"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["lastname"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["email"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["tel"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["street"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StreetAddress)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["postcode"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostalCode)
-        </dd>
-        <dt class = "col-sm-2">
-                @Localizer["city"]
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-    </dl>
-</div>
-<div>
-        <a asp-action="Edit" asp-route-id="@Model?.Id">@Localizer["edit"]</a> |
+        <hr />
+        <div class="row">
+            <div class="col-sm-12">
+
+                <table>
+                    <thead>
+
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["firstname"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.FirstName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["lastname"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.LastName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["email"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["tel"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.Tel)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                                
+                            @Localizer["street"]
+                        </td>
+                            
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.StreetAddress)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["postcode"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.PostalCode)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fw-bold">
+                            @Localizer["city"]
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Counselor.City)
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-sm-12">
+                <h4>@Localizer["camps"]</h4>
+                <table>
+                    <tbody>
+                    @foreach (var camp in Model.Camps)
+                    {
+                        <tr>
+                            <td class="fw-bold">
+                                @camp.Name
+                            </td>
+                            <td>
+                                @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")
+                            </td>
+                            
+                            @{
+                                var c = Model.CompleteStaff.FirstOrDefault(x => x.Camp == camp.Id && x.Counselor == Model.Counselor.Id);
+                                if (c.IsInCharge)
+                                {
+                                    <td>
+                                        @Localizer["incharge"]
+                                    </td>
+                                }
+                            }
+                            
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+            <br/>
+        </div>
+    </div>
+    <hr/>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Counselor.Id">@Localizer["edit"]</a> |
         <a asp-action="Counselors">@Localizer["list"]</a>
-</div>
+    </div>
 </div>
