@@ -63,9 +63,9 @@ namespace SignUpProject.Controllers
         public async Task<IActionResult> Search()
         {
             var viewModel = new ViewModel();
-            viewModel.Campers = await _context.Camper.ToListAsync();
-            viewModel.Counselors = await _context.Counselor.ToListAsync();
-            viewModel.Camps = await _context.Camp.ToListAsync();
+            viewModel.Campers = await _context.Camper.OrderBy(x => x.LastName).ToListAsync();
+            viewModel.Counselors = await _context.Counselor.OrderBy(x => x.LastName).ToListAsync();
+            viewModel.Camps = await _context.Camp.OrderBy(x => x.Start).ToListAsync();
 
             return View(viewModel);
         }
