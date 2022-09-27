@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Extensions.Localization;
 
 namespace SignUpProject.Models
 {
@@ -84,6 +85,7 @@ namespace SignUpProject.Models
         public string? Tel { get; set; }
     }
 
+    
     public enum AllergySeverity
     {
         High = 1,

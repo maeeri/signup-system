@@ -11,6 +11,7 @@ global using Microsoft.AspNetCore.Localization;
 global using Microsoft.AspNetCore.Mvc.Localization;
 global using System.ComponentModel.DataAnnotations;
 
+global using Microsoft.EntityFrameworkCore;
 
 namespace SignUpProject
 {

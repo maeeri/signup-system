@@ -1,107 +1,112 @@
-﻿@model SignUpProject.Models.ViewModel
+﻿
+@model SignUpProject.Models.ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    ViewData["Title"] = "Confirmation";
+    ViewData["Title"] = Localizer["title"];
 }
+<div class="contents">
+    <h1>@Localizer["thanks"]</h1>
 
-<h1>Thanks for signing up :)</h1>
-
-<div>
-    <h4>Your Camps</h4>
-    @{
-        foreach (var camp in Model.Camps)
-        {
-            <p>@camp.Name @camp.Start-@camp.End</p>
-        }
-    }
-    
-    <h4>Camper</h4>
-    <hr/>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Camper.FirstName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Camper.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Camper.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Camper.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Camper.StreetAddress)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Camper.StreetAddress)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Camper.PostalCode)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Camper.PostalCode)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Camper.City)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Camper.City)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Guardian.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Guardian.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Guardian.Tel)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Guardian.Tel)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Guardian.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Guardian.Email)
-        </dd>
-    </dl>
-    <dl>
-        <dt class="col-sm-2">
-            Allergies
-        </dt>
+    <div>
+        <h4>@Localizer["camps"]</h4>
         @{
-            if (Model.Allergies != null)
+            foreach (var camp in Model.Camps)
             {
-                foreach (var allergy in Model.Allergies)
-                {
-                    <dt class="col-sm-2">
-                        @allergy.Item
-                        @allergy.Severity
-                    </dt>
-                }
+                <p>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</p>
             }
         }
-    </dl>
-    <dl>
-        <dt class="col-sm-2">
-            <p>Medication</p>
-        </dt>
-        @{
-            if (Model.Medications != null)
-            {
-                foreach (var item in Model.Medications)
+
+        <h4>@Localizer["camper"]</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Localizer["firstname"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Camper.FirstName)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["lastname"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Camper.LastName)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["streetaddress"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Camper.StreetAddress)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["postcode"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Camper.PostalCode)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["city"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Camper.City)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["guardianname"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Guardian.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["tel"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Guardian.Tel)
+            </dd>
+            <dt class="col-sm-2">
+                @Localizer["email"]
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Guardian.Email)
+            </dd>
+        </dl>
+        <dl>
+            <dt class="col-sm-2">
+                @Localizer["allergy"]
+            </dt>
+            @{
+                if (Model.Allergies != null)
                 {
-                    <dt class="col-sm-2">
-                        @item.Item
-                        @item.Instructions
-                    </dt>
+                    foreach (var allergy in Model.Allergies)
+                    {
+                        <dt class="col-sm-2">
+                            @allergy.Item
+                            @Localizer[allergy.Severity.ToString()]
+                        </dt>
+                    }
                 }
             }
-        }
-    </dl>
-</div>
-<div>
-    <a asp-action="SignUp">Sign up for another camp</a>
+        </dl>
+        <dl>
+            <dt class="col-sm-2">
+                <p>@Localizer["medication"]</p>
+            </dt>
+            @{
+                if (Model.Medications != null)
+                {
+                    foreach (var item in Model.Medications)
+                    {
+                        <dt class="col-sm-2">
+                            @item.Item
+                            @item.Instructions
+                        </dt>
+                    }
+                }
+            }
+        </dl>
+    </div>
+    <div>
+        <a asp-action="SignUp">@Localizer["anothersignup"]</a>
+    </div>
+
 </div>

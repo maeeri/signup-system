@@ -117,94 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="aitem" xml:space="preserve">
-    <value>Ruokarajoite</value>
-  </data>
-  <data name="allergy" xml:space="preserve">
-    <value>Ruokavalio</value>
-  </data>
-  <data name="anothersignup" xml:space="preserve">
-    <value>Ilmoittaudu toiselle leirille</value>
-  </data>
-  <data name="busfrom" xml:space="preserve">
-    <value>Bussikuljetus leiriltä</value>
-  </data>
-  <data name="busto" xml:space="preserve">
-    <value>Bussikuljetus leirille</value>
-  </data>
-  <data name="camp" xml:space="preserve">
-    <value>Leiri</value>
-  </data>
-  <data name="camper" xml:space="preserve">
-    <value>Leiriläisen tiedot</value>
-  </data>
-  <data name="camps" xml:space="preserve">
-    <value>Leirisi</value>
-  </data>
-  <data name="city" xml:space="preserve">
-    <value>Postitoimipaikka</value>
-  </data>
-  <data name="dob" xml:space="preserve">
-    <value>Syntymäaika</value>
-  </data>
-  <data name="email" xml:space="preserve">
-    <value>Huoltajan sähköposti</value>
-  </data>
-  <data name="firstname" xml:space="preserve">
-    <value>Etunimi</value>
-  </data>
-  <data name="guardianname" xml:space="preserve">
-    <value>Huoltajan nimi</value>
-  </data>
   <data name="High" xml:space="preserve">
-    <value>Tarkka (ruoka-ainetta vältettävä kokonaan)</value>
-  </data>
-  <data name="instructions" xml:space="preserve">
-    <value>Anto-ohjeet</value>
-  </data>
-  <data name="lastname" xml:space="preserve">
-    <value>Sukunimi</value>
+    <value>Korkea (vältettävä kokonaan)</value>
   </data>
   <data name="Medicated" xml:space="preserve">
     <value>Hallittavissa lääkityksellä</value>
   </data>
-  <data name="medication" xml:space="preserve">
-    <value>Lääkitys</value>
-  </data>
   <data name="Mild" xml:space="preserve">
-    <value>Matala</value>
-  </data>
-  <data name="mitem" xml:space="preserve">
-    <value>Lääke</value>
-  </data>
-  <data name="no" xml:space="preserve">
-    <value>Ei</value>
-  </data>
-  <data name="postcode" xml:space="preserve">
-    <value>Postinumero</value>
-  </data>
-  <data name="select" xml:space="preserve">
-    <value>Valitse leiri, jolle haluat ilmoittautua</value>
+    <value>Matala (pieni määrä ei haittaa)</value>
   </data>
   <data name="severity" xml:space="preserve">
-    <value>Herkkyys ruoka-aineelle</value>
-  </data>
-  <data name="signup" xml:space="preserve">
-    <value>Ilmoittaudu leirille</value>
-  </data>
-  <data name="street" xml:space="preserve">
-    <value>Katuosoite</value>
-  </data>
-  <data name="tel" xml:space="preserve">
-    <value>Huoltajan puhelinnumero</value>
-  </data>
-  <data name="thanks" xml:space="preserve">
-    <value>Kiitos ilmoittautumisesta :)</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>Ilmoittautumisvahvistus</value>
-  </data>
-  <data name="yes" xml:space="preserve">
-    <value>Kyllä</value>
+    <value>Herkkyys</value>
   </data>
 </root>
