@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="camps" xml:space="preserve">
+    <value>Leirit</value>
+  </data>
   <data name="city" xml:space="preserve">
     <value>Postitoimipaikka</value>
   </data>
@@ -131,6 +134,9 @@
   </data>
   <data name="firstname" xml:space="preserve">
     <value>Etunimi</value>
+  </data>
+  <data name="incharge" xml:space="preserve">
+    <value>Vastuuohjaaja</value>
   </data>
   <data name="lastname" xml:space="preserve">
     <value>Sukunimi</value>

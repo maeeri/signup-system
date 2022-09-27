@@ -1,62 +1,153 @@
-﻿@model SignUpProject.Models.Camper
+﻿@model SignUpProject.Models.ViewModel
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Localizer[""];
 }
 <div class="contents">
-<h1>Details</h1>
+<h1>@Localizer["details"]</h1>
 
-<div>
-    <h4>Camper</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StreetAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StreetAddress)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PostalCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PostalCode)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DoB)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DoB)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Guardian)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Guardian)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        
+        <hr />
+        <div class="col">
+
+            <h4>@Localizer["camper"]</h4>
+            
+            <table>
+                <tbody>
+                <tr>
+                    <td class="fw-bold">
+                        @Localizer["firstname"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.FirstName)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["lastname"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.LastName)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["street"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.StreetAddress)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["postcode"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.PostalCode)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["city"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.City)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["dob"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Camper.DoB)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["guardianname"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Guardian.Name)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["gaurdiantel"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Guardian.Tel)
+                    </td>
+                </tr>
+                <tr>
+                        <td class="fw-bold">
+                        @Localizer["guardianemail"]
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Guardian.Email)
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <table>
+                <thead><h4>@Localizer["allergies"]</h4></thead>
+                <tbody>
+                @foreach (var allergy in Model.Allergies)
+                {
+                    <tr>
+                        <td>
+                            @allergy.Item
+                        </td>
+                        <td>
+                            @Localizer[allergy.Severity.ToString()]
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <br/>
+            <table>
+                <thead><h4>@Localizer["medication"]</h4></thead>
+                <tbody>
+                @foreach (var med in Model.Medications)
+                {
+                    <tr>
+                        <td>
+                            @med.Item
+                        </td>
+                        <td>
+                            @med.Instructions
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+            <br/>
+            <div>
+                <h4>@Localizer["camps"]</h4>
+                <ul>
+                    @foreach (var camp in Model.Camps)
+                    {
+                        <li>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <hr />
+        </div>
+    
+    
+
+    <div class="row">
+        <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Camper.Id">@Localizer["edit"]</a> |
+        <a asp-action="Index">@Localizer["list"]</a>
+        </div>
+    </div>
 </div>
