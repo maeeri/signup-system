@@ -59,6 +59,7 @@ namespace SignUpProject.Controllers
             return _context.Staff.Any(e => e.Id == id);
         }
 
+        [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Search()
         {
             var viewModel = new ViewModel();
