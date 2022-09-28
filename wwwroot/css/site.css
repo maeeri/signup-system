@@ -76,14 +76,7 @@ td, th {
     border: 1px solid lightgrey;
 }
 
-#trigger0, #trigger10 {
-    background-color: grey;
-}
 
-#trigger0:hover, #trigger10:hover {
-    background-color: #63437a;
-    color: white;
-}
 
 .language {
     background-color: white;

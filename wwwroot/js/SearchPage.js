@@ -101,12 +101,6 @@ const counselorsList = (input, header) => {
     }
 };
 
-//function createHeader(header) {
-//    let h = document.createElement("h3")
-//    h.innerHTML = header
-//    searchContents.appendChild(h)
-//};
-
 campBtn.addEventListener('click', () => {
     campsArea.classList.toggle('show')
 });

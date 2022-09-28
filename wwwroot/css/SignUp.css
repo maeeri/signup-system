@@ -6,3 +6,11 @@ input {
     margin: 2px;
 }
 
+button {
+    background-color: grey;
+}
+
+button:hover {
+    background-color: #63437a;
+    color: white;
+}

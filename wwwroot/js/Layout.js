@@ -1,39 +1,17 @@
-﻿const stBtn = document.getElementById("staffBtn")
+﻿//navbar dropdown elements
+const stBtn = document.getElementById("staffBtn")
 const stMenu = document.getElementById("staffActions")
-const campArea = document.getElementById("camps")
-const camperArea = document.getElementById("campers")
-const counselorArea = document.getElementById("counselors")
 
+//toggles visibility of staff menu in navbar
 stBtn.addEventListener("click", () => {
-    stMenu.classList.toggle("show")
+    stMenu.classList.toggle("showStaffActions")
 })
 
-
+//hides contents of staff menu if user clicks anywhere else on the page
 window.onclick = function (e) {
     if (!e.target.matches("#staffBtn")) {
-        if (stMenu.classList.contains("show")) {
-            stMenu.classList.remove("show");
+        if (stMenu.classList.contains("showStaffActions")) {
+            stMenu.classList.remove("showStaffActions");
         }
     }
-
-    //if (!e.target.matches("#campTrigger")) {
-    //    if (campArea.classList.contains("show")) {
-    //        campArea.classList.remove("show");
-    //        campArea.classList.add("hide");
-    //    }
-    //}
-
-    //if (!e.target.matches("#camperTrigger")) {
-    //    if (camperArea.classList.contains("show")) {
-    //        camperArea.classList.remove("show");
-    //        camperArea.classList.add("hide");
-    //    }
-    //}
-
-    //if (!e.target.matches("#staffTrigger")) {
-    //    if (counselorArea.classList.contains("show")) {
-    //        counselorArea.classList.remove("show");
-    //        counselorArea.classList.add("hide");
-    //    }
-    //}
 }
