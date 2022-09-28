@@ -25,9 +25,7 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item nav-link">
-                                <div>
-                                    <a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
-                                </div>
+                                <a asp-area="" asp-controller="Home" asp-action="Index">@Localizer["Home"]</a>
                             </li>
 
                             @if (User.Identity.IsAuthenticated && (await AuthorizationService.AuthorizeAsync(User, "StaffRole")).Succeeded)
@@ -61,13 +59,14 @@
                             else
                             {
                                 <li class="nav-item nav-link">
-                                    <a class="nav-link" asp-area="" asp-controller="SignUps" asp-action="SignUp">@Localizer["Camp sign up"]</a>
+                                    <a asp-area="" asp-controller="SignUps" asp-action="SignUp">@Localizer["Camp sign up"]</a>
 
                                 </li>
                                 <li class="nav-item nav-link">
-                                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
+                                    <a asp-area="" asp-controller="Account" asp-action="Login">@Localizer["Login"]</a>
 
                                 </li>
+                        
 
                             }
 
