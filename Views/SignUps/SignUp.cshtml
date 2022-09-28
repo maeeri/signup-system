@@ -7,7 +7,7 @@
     ViewData["Title"] = Localizer["signup"];
 }
 
-<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/SignUp.css" asp-append-version="true"/>
 
 <div class="contents">
 <h1>@Localizer["signup"]</h1>
@@ -35,7 +35,7 @@
 </div>
 <div class="form-group">
     <label asp-for="Camper!.FirstName" class="control-label">@Localizer["firstname"]</label>
-    <input asp-for="Camper!.FirstName" class="form-control"/>
+    <input asp-for="Camper!.FirstName" class="form-control" />
     <span asp-validation-for="Camper!.FirstName" class="text-danger"></span>
 </div>
 <div class="form-group">
@@ -121,10 +121,10 @@
         <label asp-for="Allergies[0].Severity">@Localizer["mild"]</label>
     </div>
     <div>
-                        <button id="trigger1">@Localizer["addmoreall"]</button>
+        <button id="trigger1">@Localizer["addmoreall"]</button>
     </div>
 </div>
-                <div id="allergies1" class="" style="display: none">
+<div id="allergies1" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Allergies[1].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[1].Item" class="form-control"/>
@@ -139,7 +139,7 @@
         <label asp-for="Allergies[1].Severity">@Localizer["mild"]</label>
     </div>
     <div>
-                        <button id="trigger2">@Localizer["addmoreall"]</button>
+        <button id="trigger2">@Localizer["addmoreall"]</button>
     </div>
 </div>
 <div id="allergies2" class="" style="display: none">
@@ -156,11 +156,11 @@
         <input type="radio" asp-for="Allergies[2].Severity" name="Allergies[1].Severity" value="3">
         <label asp-for="Allergies[2].Severity">@Localizer["mild"]</label>
         <div>
-                            <button id="trigger3">@Localizer["addmoreall"]</button>
+            <button id="trigger3">@Localizer["addmoreall"]</button>
         </div>
     </div>
 </div>
-                <div id="allergies3" class="" style="display: none">
+<div id="allergies3" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Allergies[3].Item" class="control-label">@Localizer["allergy"]</label>
         <input asp-for="Allergies[3].Item" class="form-control"/>
@@ -193,10 +193,10 @@
         <label asp-for="Allergies[4].Severity">@Localizer["mild"]</label>
     </div>
 </div>
-                <div>
-                    <button id="trigger10">@Localizer["addmedication"]</button>
-                </div>
-                <div id="medication0" class="" style="display: none">
+<div>
+    <button id="trigger10">@Localizer["addmedication"]</button>
+</div>
+<div id="medication0" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Medications[0].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[0].Item" class="form-control"/>
@@ -208,7 +208,7 @@
         <span asp-validation-for="Medications[0].Instructions" class="text-danger"></span>
     </div>
     <div>
-                        <button id="trigger5">@Localizer["addmoremed"]</button>
+        <button id="trigger5">@Localizer["addmoremed"]</button>
     </div>
 </div>
 <div id="medication1" class="" style="display: none">
@@ -223,10 +223,10 @@
         <span asp-validation-for="Medications[1].Instructions" class="text-danger"></span>
     </div>
     <div>
-                        <button id="trigger6">@Localizer["addmoremed"]</button>
+        <button id="trigger6">@Localizer["addmoremed"]</button>
     </div>
 </div>
-                <div id="medication2" class="" style="display: none">
+<div id="medication2" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Medications[2].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[2].Item" class="form-control"/>
@@ -238,10 +238,10 @@
         <span asp-validation-for="Medications[2].Instructions" class="text-danger"></span>
     </div>
     <div>
-                        <button id="trigger7">@Localizer["addmoremed"]</button>
+        <button id="trigger7">@Localizer["addmoremed"]</button>
     </div>
 </div>
-                <div id="medication3" class="" style="display: none">
+<div id="medication3" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Medications[3].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[3].Item" class="form-control"/>
@@ -253,10 +253,10 @@
         <span asp-validation-for="Medications[3].Instructions" class="text-danger"></span>
     </div>
     <div>
-                        <button id="trigger8">@Localizer["addmoremed"]</button>
+        <button id="trigger8">@Localizer["addmoremed"]</button>
     </div>
 </div>
-                <div id="medication4" class="" style="display: none">
+<div id="medication4" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Medications[4].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[4].Item" class="form-control"/>
@@ -268,10 +268,10 @@
         <span asp-validation-for="Medications[4].Instructions" class="text-danger"></span>
     </div>
     <div>
-                        <button id="trigger9">@Localizer["addmoremed"]</button>
+        <button id="trigger9">@Localizer["addmoremed"]</button>
     </div>
 </div>
-                <div id="medication5" class="" style="display: none">
+<div id="medication5" class="" style="display: none">
     <div class="form-group">
         <label asp-for="Medications[5].Item" class="control-label">@Localizer["mitem"]</label>
         <input asp-for="Medications[5].Item" class="form-control"/>
@@ -282,9 +282,9 @@
         <input asp-for="Medications[5].Instructions" class="form-control"/>
         <span asp-validation-for="Medications[5].Instructions" class="text-danger"></span>
     </div>
-</div>
+                </div>
 <div class="form-group">
-                    <input type="submit" value="@Localizer["signup"]" class="btn btn-primary" />
+    <input type="submit" value="@Localizer["signup"]" class="btn btn-primary"/>
 </div>
 </form>
 </div>

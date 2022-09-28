@@ -123,16 +123,32 @@ namespace SignUpProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var viewModel = await GetCamperViewModel(id);
             if (_context.Camper == null)
             {
                 return Problem("Entity set 'SignUpProjectContext.Camper'  is null.");
             }
-            var camper = await _context.Camper.FindAsync(id);
-            if (camper != null)
-            {
-                _context.Camper.Remove(camper);
-            }
             
+            if (viewModel.Camper != null)
+                _context.Camper.Remove(viewModel.Camper);
+
+            if (viewModel.AllCampPeople.Count > 0)
+                _context.CampPeople.RemoveRange(viewModel.AllCampPeople);
+
+            if (viewModel.Allergies.Count > 0)
+                _context.Allergy.RemoveRange(viewModel.Allergies);
+
+            if (viewModel.Medications.Count > 0)
+                _context.Medication.RemoveRange(viewModel.Medications);
+
+            _context.SaveChanges(); //needs to be done here to check whether another camper has the same guardian and if not, delete guardian info
+
+            viewModel.Campers = await _context.Camper.ToListAsync();
+            var guardianIds = viewModel.Campers.Select(x => x.Guardian).ToList();
+
+            if (!guardianIds.Contains(viewModel.Guardian.Id))
+                _context.Remove(viewModel.Guardian);
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -142,18 +158,19 @@ namespace SignUpProject.Controllers
             return _context.Camper.Any(e => e.Id == id);
         }
 
-        private async Task<ViewModel> GetCamperViewModel(int? id)
+        public async Task<ViewModel> GetCamperViewModel(int? id)
         {
             var viewModel = new ViewModel();
+            viewModel.Camper = await _context.Camper.FindAsync(id);
             viewModel.Camps = new List<Camp>();
             viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camper == id).ToListAsync();
             viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
             viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
-            viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper.Guardian);
+            viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper!.Guardian);
 
             foreach (var link in viewModel.AllCampPeople)
             {
-                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == link.Camp));
+                viewModel.Camps.Add((await _context.Camp.FirstOrDefaultAsync(x => x.Id == link.Camp))!);
             }
 
             return viewModel;

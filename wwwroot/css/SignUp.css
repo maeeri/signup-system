@@ -14,3 +14,7 @@ button:hover {
     background-color: #63437a;
     color: white;
 }
+
+.show {
+    display: block !important;
+}

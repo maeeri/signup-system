@@ -12,39 +12,40 @@
 <div class="row">
     <div class="col-sm-12 col-lg-6 col-xl-5">
         <form asp-action="AddCounselor">
+            <input type="hidden" asp-for="Counselor.Id" value="@Model.Counselor?.Id"/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                    <label asp-for="Counselor!.FirstName" class="control-label">@Localizer["firstname"]</label>
+                <label asp-for="Counselor!.FirstName" class="control-label">@Localizer["firstname"]</label>
                 <input asp-for="Counselor!.FirstName" class="form-control"/>
                 <span asp-validation-for="Counselor!.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.LastName" class="control-label">@Localizer["lastname"]</label>
+                <label asp-for="Counselor!.LastName" class="control-label">@Localizer["lastname"]</label>
                 <input asp-for="Counselor!.LastName" class="form-control"/>
                 <span asp-validation-for="Counselor!.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.Tel" class="control-label">@Localizer["tel"]</label>
+                <label asp-for="Counselor!.Tel" class="control-label">@Localizer["tel"]</label>
                 <input asp-for="Counselor!.Tel" class="form-control"/>
                 <span asp-validation-for="Counselor!.Tel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.Email" class="control-label">@Localizer["email"]</label>
+                <label asp-for="Counselor!.Email" class="control-label">@Localizer["email"]</label>
                 <input asp-for="Counselor!.Email" class="form-control"/>
                 <span asp-validation-for="Counselor!.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.StreetAddress" class="control-label">@Localizer["street"]</label>
+                <label asp-for="Counselor!.StreetAddress" class="control-label">@Localizer["street"]</label>
                 <input asp-for="Counselor!.StreetAddress" class="form-control"/>
                 <span asp-validation-for="Counselor!.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.PostalCode" class="control-label">@Localizer["postcode"]</label>
+                <label asp-for="Counselor!.PostalCode" class="control-label">@Localizer["postcode"]</label>
                 <input asp-for="Counselor!.PostalCode" class="form-control"/>
                 <span asp-validation-for="Counselor!.PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                    <label asp-for="Counselor!.City" class="control-label">@Localizer["city"]</label>
+                <label asp-for="Counselor!.City" class="control-label">@Localizer["city"]</label>
                 <input asp-for="Counselor!.City" class="form-control"/>
                 <span asp-validation-for="Counselor!.City" class="text-danger"></span>
             </div>
@@ -73,7 +74,7 @@
                 </div>
             </div>
             <div class="form-group">
-                    <input type="submit" value="@Localizer["add"]" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["add"]" class="btn btn-primary"/>
             </div>
         </form>
     </div>

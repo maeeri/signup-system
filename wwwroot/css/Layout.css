@@ -15,6 +15,10 @@
     display: none;
 }
 
+footer {
+    background-color: white;
+}
+
 @media (min-device-width: 580px) {
 
     .navbar {
@@ -32,10 +36,6 @@
         font-family: 'Rajdhani', sans-serif;
         outline: inherit;
         background-color: inherit;
-    }
-
-    footer {
-        background-color: white;
     }
 
     .dropdown {

@@ -55,10 +55,22 @@ namespace SignUpProject.Controllers
 
         // GET: Counselors/Create
         [Authorize(Roles = "Admin")]
-        public IActionResult AddCounselor()
+        public async Task<IActionResult> AddCounselor(int? id)
         {
             var viewModel = new ViewModel();
             if (_context.Camp != null) viewModel.Camps = _context.Camp.ToList();
+
+            if (id != null)
+            {
+                viewModel = await GetCounselorViewModel(id);
+                if (_context.Camp != null) viewModel.Camps = _context.Camp.ToList();
+
+                foreach (var staff in viewModel.CompleteStaff)
+                {
+                    viewModel.Camps.Remove(await _context.Camp.FirstOrDefaultAsync(x => x.Id == staff.Camp));
+                }
+            }
+
             return View(viewModel);
         }
 
@@ -68,12 +80,20 @@ namespace SignUpProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> AddCounselor([Bind("Staff,Counselor")] ViewModel viewModel)
+        public async Task<ActionResult> AddCounselor(int? id, [Bind("Staff,Counselor")] ViewModel viewModel)
         {
             try
             {
-                _context.Counselor?.Add(viewModel.Counselor!);
-                _context.SaveChanges();
+                if (_context.Counselor.Any(x => x.Id == id))
+                {
+                    _context.Update(viewModel.Counselor);
+                }
+
+                else
+                {
+                    _context.Counselor?.Add(viewModel.Counselor!);
+                    _context.SaveChanges();
+                }
 
                 if (viewModel.Staff != null)
                 {
@@ -82,7 +102,7 @@ namespace SignUpProject.Controllers
                 }
 
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Counselors");
             }
             catch
             {
@@ -201,7 +221,7 @@ namespace SignUpProject.Controllers
         private async Task<ViewModel> GetCounselorViewModel(int? id)
         {
             var viewModel = new ViewModel();
-            viewModel.Counselor = await _context.Counselor.FirstOrDefaultAsync(x => x.Id == id);
+            viewModel.Counselor = await _context.Counselor.FindAsync(id);
             viewModel.CompleteStaff = await _context.Staff.Where(x => x.Counselor == id).ToListAsync();
             viewModel.Camps = new List<Camp>();
 

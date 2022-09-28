@@ -112,7 +112,7 @@
     <div>
         @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
         {
-            <div><a asp-action="Edit" asp-route-id="@Model?.Counselor.Id">@Localizer["edit"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
+            <div><a asp-action="Edit" asp-route-id="@Model?.Counselor.Id">@Localizer["edit"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a> | <a asp-action="AddCounselor" asp-route-id="@Model.Counselor.Id">@Localizer["addcamprole"]</a></div>
         }
         else
         {

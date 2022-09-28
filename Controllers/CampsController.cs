@@ -167,6 +167,7 @@ namespace SignUpProject.Controllers
         private async Task<ViewModel> GetCampViewModel(int? id)
         {
             var viewModel = new ViewModel();
+            viewModel.Camp = await _context.Camp.FindAsync(id);
             viewModel.Counselors = new List<Counselor>();
             viewModel.CompleteStaff = await _context.Staff?.Where(x => x.Camp == id).ToListAsync()!;
             viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camp == id).ToListAsync();
