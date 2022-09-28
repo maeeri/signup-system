@@ -129,6 +129,9 @@
   <data name="details" xml:space="preserve">
     <value>profile details</value>
   </data>
+  <data name="dietinfo" xml:space="preserve">
+    <value>Diet info</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>Edit camp info</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="guardiantel" xml:space="preserve">
     <value>Guardian phone number</value>
   </data>
+  <data name="High" xml:space="preserve">
+    <value>To be avoided</value>
+  </data>
   <data name="lastname" xml:space="preserve">
     <value>Surname</value>
   </data>
@@ -153,8 +159,23 @@
   <data name="location" xml:space="preserve">
     <value>Location</value>
   </data>
+  <data name="Medicated" xml:space="preserve">
+    <value>Managed with medication</value>
+  </data>
+  <data name="Mild" xml:space="preserve">
+    <value>Mild</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Camp name</value>
+  </data>
+  <data name="personname" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ridein" xml:space="preserve">
+    <value>Busride to camp</value>
+  </data>
+  <data name="rideout" xml:space="preserve">
+    <value>Busride from camp</value>
   </data>
   <data name="staff" xml:space="preserve">
     <value>Staff</value>

@@ -6,9 +6,9 @@ body {
 
 ul {
     list-style-type: none;
-    border: 1px solid grey;
     padding-top: 5%;
     padding-bottom: 5%;
+    border: none;
 }
 
 li {

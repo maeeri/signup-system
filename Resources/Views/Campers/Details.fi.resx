@@ -132,6 +132,9 @@
   <data name="details" xml:space="preserve">
     <value>Profiili</value>
   </data>
+  <data name="dietinfo" xml:space="preserve">
+    <value>Ruokavaliotiedot</value>
+  </data>
   <data name="dob" xml:space="preserve">
     <value>Syntymäaika</value>
   </data>

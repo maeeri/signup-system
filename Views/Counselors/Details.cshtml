@@ -83,32 +83,27 @@
             
             <div class="col-sm-12 col-lg-6">
                 <h4>@Localizer["camps"]</h4>
-                <table>
-                    <tbody>
+                
+
+                    <ul>
                     @foreach (var camp in Model.Camps)
                     {
-                        <tr>
-                            <td class="fw-bold">
-                                @camp.Name
-                            </td>
-                            <td>
-                                @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")
-                            </td>
-                            
-                            @{
-                                var c = Model.CompleteStaff.FirstOrDefault(x => x.Camp == camp.Id && x.Counselor == Model.Counselor.Id);
-                                if (c.IsInCharge)
-                                {
-                                    <td>
-                                        @Localizer["incharge"]
-                                    </td>
-                                }
+
+                        <li>
+                            <a class="fw-bold" asp-controller="Camps" asp-action="Details" asp-route-id="@camp.Id">@camp.Name</a> | @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy") |
+
+                        @{
+                            var c = Model.CompleteStaff.FirstOrDefault(x => x.Camp == camp.Id && x.Counselor == Model.Counselor.Id);
+                            if (c.IsInCharge)
+                            {
+                                @Localizer["incharge"]
                             }
-                            
-                        </tr>
+                        }
+                        </li>
+                    
                     }
-                    </tbody>
-                </table>
+                    </ul>
+                    
             </div>
             <br/>
         </div>

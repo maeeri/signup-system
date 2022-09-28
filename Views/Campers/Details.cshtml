@@ -100,7 +100,7 @@
                 @foreach (var allergy in Model.Allergies)
                 {
                     <tr>
-                        <td>
+                        <td class="fw-bold">
                             @allergy.Item
                         </td>
                         <td>
@@ -117,7 +117,7 @@
                 @foreach (var med in Model.Medications)
                 {
                     <tr>
-                        <td>
+                        <td class="fw-bold">
                             @med.Item
                         </td>
                         <td>
@@ -134,7 +134,11 @@
                 <ul>
                     @foreach (var camp in Model.Camps)
                     {
-                        <li>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</li>
+                        <li>
+                            <a asp-action="Details" asp-controller="Camps" asp-route-id="@camp.Id">
+                                @camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")
+                            </a>
+                        </li>
                     }
                 </ul>
             </div>

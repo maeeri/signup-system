@@ -129,6 +129,9 @@
   <data name="details" xml:space="preserve">
     <value>profiili</value>
   </data>
+  <data name="dietinfo" xml:space="preserve">
+    <value>Ruokavaliotiedot</value>
+  </data>
   <data name="edit" xml:space="preserve">
     <value>Muokkaa leirin tietoja</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="guardiantel" xml:space="preserve">
     <value>Huoltajan puhelinnumero</value>
   </data>
+  <data name="High" xml:space="preserve">
+    <value>Tarkka (ruoka-ainetta vältettävä kokonaan)</value>
+  </data>
   <data name="lastname" xml:space="preserve">
     <value>Sukunimi</value>
   </data>
@@ -153,8 +159,23 @@
   <data name="location" xml:space="preserve">
     <value>Leirin sijainti</value>
   </data>
+  <data name="Medicated" xml:space="preserve">
+    <value>Hallittavissa lääkityksellä</value>
+  </data>
+  <data name="Mild" xml:space="preserve">
+    <value>Matala</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Leirin nimi</value>
+  </data>
+  <data name="personname" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="ridein" xml:space="preserve">
+    <value>Kyyti leirille</value>
+  </data>
+  <data name="rideout" xml:space="preserve">
+    <value>Kyyti leiriltä</value>
   </data>
   <data name="staff" xml:space="preserve">
     <value>Ohjaajat</value>

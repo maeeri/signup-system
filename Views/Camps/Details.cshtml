@@ -53,10 +53,7 @@
         <tbody>
         <tr>
             <th>
-                        @Localizer["firstname"]
-            </th>
-            <th>
-                        @Localizer["lastname"]
+                        @Localizer["personname"]
             </th>
             <th>
                         @Localizer["tel"]
@@ -72,10 +69,7 @@
                     {
                         <tr>
                             <td>
-                                @item.FirstName
-                            </td>
-                            <td>
-                                @item.LastName
+                                @item.FirstName @item.LastName
                             </td>
                             <td>
                                 @item.Tel
@@ -100,21 +94,24 @@
     
     <table>
         <thead>
-                <h4>@Localizer["campers"]</h4>
+        <h4>@Localizer["campers"]</h4>
         </thead>
         <tbody>
         <tr>
             <th>
-                        @Localizer["firstname"]
+                @Localizer["personname"]
             </th>
             <th>
-                        @Localizer["lastname"]
+                @Localizer["guardian"]
             </th>
             <th>
-                        @Localizer["guardian"]
+                @Localizer["guardiantel"]
             </th>
             <th>
-                        @Localizer["guardiantel"]
+                @Localizer["ridein"]
+            </th>
+            <th>
+                @Localizer["rideout"]
             </th>
             <th>
 
@@ -125,12 +122,10 @@
             {
                 foreach (var item in Model.Campers)
                 {
+                    var campPeople = Model.AllCampPeople.FirstOrDefault(x => x.Camper == item.Id);
                     <tr>
                         <td>
-                            @item.FirstName
-                        </td>
-                        <td>
-                            @item.LastName
+                            @item.FirstName @item.LastName
                         </td>
                         <td>
                             @Model.Guardians.FirstOrDefault(x => x.Id == item.Guardian).Name
@@ -139,12 +134,30 @@
                             @Model.Guardians.FirstOrDefault(x => x.Id == item.Guardian).Tel
                         </td>
                         <td>
+                            @if (campPeople.RideIn)
+                            {
+                                <span class="material-symbols-outlined">
+                                    check
+                                </span>
+                            }
+                        </td>
+                        <td>
+                            @if (campPeople.RideOut)
+                            {
+                                <span class="material-symbols-outlined">
+                                    check
+                                </span>
+                            }
+                        </td>
+                            
+                        <td>
                             <a asp-action="Details" asp-controller="Campers" asp-route-id="@item.Id">
                                 <span title="@Localizer["details"]" class="material-symbols-outlined">
                                     info
                                 </span>
                             </a>
                         </td>
+                        
                     </tr>
                 }
             }
@@ -152,6 +165,17 @@
         }
         </tbody>
     </table>
+        <br />
+        <hr />
+    <br />
+    
+    <h4>@Localizer["dietinfo"]</h4>
+        <ul>
+    @foreach (var allergy in Model.Allergies)
+    {
+        <li>@allergy.Item, @Localizer[@allergy.Severity.ToString()]</li>
+    }
+    </ul>
     <br/>
     <hr/>
 
