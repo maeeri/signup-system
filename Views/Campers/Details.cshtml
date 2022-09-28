@@ -148,10 +148,17 @@
     
     
 
-    <div class="row">
+    <div>
         <div>
-        <a asp-action="Edit" asp-route-id="@Model?.Camper.Id">@Localizer["edit"]</a> |
-        <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a>
+            @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+            {
+                <div><a asp-action="Edit" asp-route-id="@Model?.Camper.Id">@Localizer["edit"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
+            }
+            else
+            {
+                <div><a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
+            }
+            
         </div>
     </div>
 </div>

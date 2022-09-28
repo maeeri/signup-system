@@ -41,14 +41,14 @@
                             @foreach (var staff in Model.CompleteStaff.Where(x => x.Counselor == item.Id))
                             {
                                 var camp = Model.Camps.FirstOrDefault(x => x.Id == staff.Camp);
-                                if (staff.IsInCharge)
-                                {
-                                    <div>@camp.Name Leader</div>
-                                }
-                                else
-                                {
-                                    <div>@camp.Name</div>
-                                }
+                                
+                                    <div>
+                                        <a asp-controller="Camps" asp-action="Details" asp-route-id="@camp.Id">
+                                            @camp.Name
+                                        </a>
+                                        @if (staff.IsInCharge){ @Localizer["leader"] }
+                                    </div>
+                                
                             }
                         </td>
                         @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)

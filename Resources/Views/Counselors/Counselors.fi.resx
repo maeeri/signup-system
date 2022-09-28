@@ -132,6 +132,9 @@
   <data name="edit" xml:space="preserve">
     <value>muokkaa profiilia</value>
   </data>
+  <data name="leader" xml:space="preserve">
+    <value>Vastuuohjaaja</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Nimi</value>
   </data>

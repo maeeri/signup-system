@@ -132,6 +132,9 @@
   <data name="edit" xml:space="preserve">
     <value>edit profile</value>
   </data>
+  <data name="leader" xml:space="preserve">
+    <value>Lead counselor</value>
+  </data>
   <data name="name" xml:space="preserve">
     <value>Name</value>
   </data>
