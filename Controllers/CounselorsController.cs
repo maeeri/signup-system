@@ -48,15 +48,7 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var viewModel = new ViewModel();
-            viewModel.Counselor = counselor;
-            viewModel.CompleteStaff = await _context.Staff.Where(m => m.Counselor == id).ToListAsync();
-            viewModel.Camps = new List<Camp>();
-
-            foreach (var staff in viewModel.CompleteStaff)
-            {
-                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == staff.Camp));
-            }
+            var viewModel = await GetCounselorViewModel(id);
 
             return View(viewModel);
         }
@@ -114,10 +106,7 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var viewModel = new ViewModel();
-            viewModel.Counselor = counselor;
-            viewModel.CompleteStaff = await _context.Staff.Where(x => x.Counselor == id).ToListAsync();
-            viewModel.Camps = await _context.Camp.ToListAsync();
+            var viewModel = await GetCounselorViewModel(id);
 
             return View(viewModel);
         }
@@ -128,14 +117,14 @@ namespace SignUpProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Edit(int id, [Bind("Counselor")] ViewModel viewModel)
+        public async Task<ActionResult> Edit(int id, [Bind("Counselor, CompleteStaff")] ViewModel viewModel)
         {
-            if (id != viewModel.Counselor.Id)
+            if (id != viewModel.Counselor!.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (viewModel.Counselor != null)
             {
                 try
                 {
@@ -167,14 +156,14 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var counselor = await _context.Counselor
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (counselor == null)
+            var viewModel = await GetCounselorViewModel(id);
+            
+            if (viewModel.Counselor == null)
             {
                 return NotFound();
             }
 
-            return View(counselor);
+            return View(viewModel);
         }
 
         // POST: Counselors/Delete/5
@@ -183,14 +172,21 @@ namespace SignUpProject.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var viewModel = await GetCounselorViewModel(id);
+
             if (_context.Counselor == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Councelor'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Counselor'  is null.");
             }
-            var counselor = await _context.Counselor.FindAsync(id);
-            if (counselor != null)
+
+            if (viewModel.Counselor != null)
             {
-                _context.Counselor.Remove(counselor);
+                _context.Counselor.Remove(viewModel.Counselor);
+            }
+
+            if (viewModel.CompleteStaff != null)
+            {
+                _context.Staff.RemoveRange(viewModel.CompleteStaff);
             }
 
             await _context.SaveChangesAsync();
@@ -200,6 +196,21 @@ namespace SignUpProject.Controllers
         private bool CounselorExists(int id)
         {
             return (_context.Counselor?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private async Task<ViewModel> GetCounselorViewModel(int? id)
+        {
+            var viewModel = new ViewModel();
+            viewModel.Counselor = await _context.Counselor.FirstOrDefaultAsync(x => x.Id == id);
+            viewModel.CompleteStaff = await _context.Staff.Where(x => x.Counselor == id).ToListAsync();
+            viewModel.Camps = new List<Camp>();
+
+            foreach (var staff in viewModel.CompleteStaff)
+            {
+                viewModel.Camps.Add((await _context.Camp.FirstOrDefaultAsync(x => x.Id == staff.Camp))!);
+            }
+
+            return viewModel;
         }
     }
 }

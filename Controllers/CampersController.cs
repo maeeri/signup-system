@@ -33,44 +33,35 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var camper = await _context.Camper
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (camper == null)
+            var viewModel = await GetCamperViewModel(id);
+            
+            if (viewModel.Camper == null)
             {
                 return NotFound();
             }
-
-            var viewModel = new ViewModel();
-            viewModel.Camper = camper;
-            viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper.Guardian);
-            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camper == id).ToListAsync();
-            viewModel.Camps = new List<Camp>();
-
-            foreach (var campPeople in viewModel.AllCampPeople)
-            {
-                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == campPeople.Camp));
-            }
-
-            viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
-            viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
-
+            
             return View(viewModel);
         }
 
         // GET: Campers/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null || _context.Camper == null)
             {
                 return NotFound();
             }
 
-            var camper = await _context.Camper.FindAsync(id);
-            if (camper == null)
+            var viewModel = await GetCamperViewModel(id);
+
+            if (viewModel.Camper == null)
             {
                 return NotFound();
             }
-            return View(camper);
+            
+
+            return View(viewModel);
         }
 
         // POST: Campers/Edit/5
@@ -78,9 +69,10 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,StreetAddress,PostalCode,City,DoB,Guardian")] Camper camper)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(int id, [Bind("Camper, Allergies, CampPeople")] ViewModel viewModel)
         {
-            if (id != camper.Id)
+            if (id != viewModel.Camper.Id)
             {
                 return NotFound();
             }
@@ -89,12 +81,12 @@ namespace SignUpProject.Controllers
             {
                 try
                 {
-                    _context.Update(camper);
+                    _context.Update(viewModel.Camper);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!CamperExists(camper.Id))
+                    if (!CamperExists(viewModel.Camper.Id))
                     {
                         return NotFound();
                     }
@@ -105,7 +97,7 @@ namespace SignUpProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(camper);
+            return View(viewModel);
         }
 
         // GET: Campers/Delete/5
@@ -116,14 +108,14 @@ namespace SignUpProject.Controllers
                 return NotFound();
             }
 
-            var camper = await _context.Camper
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (camper == null)
+            var viewModel = await GetCamperViewModel(id);
+            
+            if (viewModel.Camper == null)
             {
                 return NotFound();
             }
 
-            return View(camper);
+            return View(viewModel);
         }
 
         // POST: Campers/Delete/5
@@ -148,6 +140,23 @@ namespace SignUpProject.Controllers
         private bool CamperExists(int id)
         {
             return _context.Camper.Any(e => e.Id == id);
+        }
+
+        private async Task<ViewModel> GetCamperViewModel(int? id)
+        {
+            var viewModel = new ViewModel();
+            viewModel.Camps = new List<Camp>();
+            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper.Guardian);
+
+            foreach (var link in viewModel.AllCampPeople)
+            {
+                viewModel.Camps.Add(await _context.Camp.FirstOrDefaultAsync(x => x.Id == link.Camp));
+            }
+
+            return viewModel;
         }
     }
 }

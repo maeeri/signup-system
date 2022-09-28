@@ -34,45 +34,17 @@ namespace SignUpProject.Controllers
         // GET: Camps/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            var viewModel = new ViewModel();
+            var viewModel = await GetCampViewModel(id);
 
             if (id == null || _context.Camp == null)
             {
                 return NotFound();
             }
 
-            viewModel.Camp = await _context.Camp
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (viewModel.Camp == null)
             {
                 return NotFound();
             }
-
-            viewModel.Counselors = new List<Counselor>();
-            viewModel.CompleteStaff = await _context.Staff?.Where(x => x.Camp == id).ToListAsync()!;
-            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camp == id).ToListAsync();
-            viewModel.Campers = new List<Camper>();
-            viewModel.Allergies = new List<Allergy>();
-
-            foreach (var campPeople in viewModel.AllCampPeople)
-            {
-                viewModel.Campers.Add(_context.Camper.FirstOrDefault(x => x.Id == campPeople.Camper)!);
-            }
-
-            foreach (var camper in viewModel.Campers)
-            {
-                viewModel.Allergies.AddRange(await _context.Allergy.Where(x => x.Camper == camper.Id).ToListAsync());
-            }
-
-            viewModel.Allergies = viewModel.Allergies.OrderBy(x => x.Item).ToList();
-            viewModel.Guardians = await _context.Guardian.ToListAsync();
-
-            if (viewModel.CompleteStaff != null)
-                foreach (var staff in viewModel.CompleteStaff)
-                {
-                    viewModel.Counselors.Add(
-                        (await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor)!)!);
-                }
 
             return View(viewModel);
         }
@@ -190,6 +162,38 @@ namespace SignUpProject.Controllers
         private bool CampExists(int id)
         {
             return (_context.Camp?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private async Task<ViewModel> GetCampViewModel(int? id)
+        {
+            var viewModel = new ViewModel();
+            viewModel.Counselors = new List<Counselor>();
+            viewModel.CompleteStaff = await _context.Staff?.Where(x => x.Camp == id).ToListAsync()!;
+            viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camp == id).ToListAsync();
+            viewModel.Campers = new List<Camper>();
+            viewModel.Allergies = new List<Allergy>();
+
+            foreach (var campPeople in viewModel.AllCampPeople)
+            {
+                viewModel.Campers.Add(_context.Camper.FirstOrDefault(x => x.Id == campPeople.Camper)!);
+            }
+
+            foreach (var camper in viewModel.Campers)
+            {
+                viewModel.Allergies.AddRange(await _context.Allergy.Where(x => x.Camper == camper.Id).ToListAsync());
+            }
+
+            viewModel.Allergies = viewModel.Allergies.OrderBy(x => x.Item).ToList();
+            viewModel.Guardians = await _context.Guardian.ToListAsync();
+
+            if (viewModel.CompleteStaff != null)
+                foreach (var staff in viewModel.CompleteStaff)
+                {
+                    viewModel.Counselors.Add(
+                        (await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor)!)!);
+                }
+
+            return viewModel;
         }
     }
 }
