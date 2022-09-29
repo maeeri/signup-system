@@ -1,12 +1,16 @@
 ﻿@model SignUpProject.Models.ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@Localizer[""]
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = Localizer["title"];
 }
 <div class="contents">
-<h1>Edit</h1>
+    <h1>@Localizer["title"]</h1>
 
-<h4>Counselor</h4>
+    <h4>@Localizer["counselor"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,48 +18,50 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Counselor.Id" />
             <div class="form-group">
-                <label asp-for="Counselor.FirstName" class="control-label"></label>
+                    <label asp-for="Counselor.FirstName" class="control-label">@Localizer["firstname"]</label>
                 <input asp-for="Counselor.FirstName" class="form-control" />
                 <span asp-validation-for="Counselor.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.LastName" class="control-label"></label>
+                    <label asp-for="Counselor.LastName" class="control-label">@Localizer["lastname"]</label>
                 <input asp-for="Counselor.LastName" class="form-control" />
                 <span asp-validation-for="Counselor.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.Email" class="control-label"></label>
+                    <label asp-for="Counselor.Email" class="control-label">@Localizer["email"]</label>
                 <input asp-for="Counselor.Email" class="form-control" />
                 <span asp-validation-for="Counselor.Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.Tel" class="control-label"></label>
+                    <label asp-for="Counselor.Tel" class="control-label">@Localizer["tel"]</label>
                 <input asp-for="Counselor.Tel" class="form-control" />
                 <span asp-validation-for="Counselor.Tel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.StreetAddress" class="control-label"></label>
+                    <label asp-for="Counselor.StreetAddress" class="control-label">@Localizer["street"]</label>
                 <input asp-for="Counselor.StreetAddress" class="form-control" />
                 <span asp-validation-for="Counselor.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.PostalCode" class="control-label"></label>
+                    <label asp-for="Counselor.PostalCode" class="control-label">@Localizer["postcode"]</label>
                 <input asp-for="Counselor.PostalCode" class="form-control" />
                 <span asp-validation-for="Counselor.PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Counselor.City" class="control-label"></label>
+                    <label asp-for="Counselor.City" class="control-label">@Localizer["city"]</label>
                 <input asp-for="Counselor.City" class="form-control" />
                 <span asp-validation-for="Counselor.City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="@Localizer["save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<hr/>
 <div>
-    <a asp-action="Counselors">Back to List</a>
+    <a asp-action="Counselors">@Localizer["list"]</a> |
+    <a asp-action="Details" asp-route-id="@Model.Counselor.Id">@Localizer["details"]</a> |
+    <a asp-controller="Data" asp-action="Search">@Localizer["search"]</a>
 </div>
 </div>

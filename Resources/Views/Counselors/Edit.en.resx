@@ -117,58 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="addcamprole" xml:space="preserve">
-    <value>Lisää leiritieto</value>
-  </data>
-  <data name="camps" xml:space="preserve">
-    <value>Leirit</value>
-  </data>
   <data name="city" xml:space="preserve">
-    <value>Postitoimipaikka</value>
-  </data>
-  <data name="confirm" xml:space="preserve">
-    <value>Oletko varma, että haluat lopullisesti poistaa ohjaajan tiedot?</value>
+    <value>City</value>
   </data>
   <data name="counselor" xml:space="preserve">
-    <value>Ohjaaja</value>
-  </data>
-  <data name="delete" xml:space="preserve">
-    <value>Poista ohjaajan tiedot</value>
+    <value>Counselor</value>
   </data>
   <data name="details" xml:space="preserve">
-    <value>Profiili</value>
-  </data>
-  <data name="edit" xml:space="preserve">
-    <value>Muokkaa profiilia</value>
+    <value>Profile</value>
   </data>
   <data name="email" xml:space="preserve">
-    <value>Sähköpostiosoite</value>
+    <value>Email</value>
   </data>
   <data name="firstname" xml:space="preserve">
-    <value>Etunimi</value>
-  </data>
-  <data name="incharge" xml:space="preserve">
-    <value> | Vastuuohjaaja</value>
+    <value>First name</value>
   </data>
   <data name="lastname" xml:space="preserve">
-    <value>Sukunimi</value>
+    <value>Surname</value>
   </data>
   <data name="list" xml:space="preserve">
-    <value>Ohjaajalista</value>
+    <value>Staff list</value>
   </data>
   <data name="postcode" xml:space="preserve">
-    <value>Postinumero</value>
+    <value>Postal code</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="search" xml:space="preserve">
-    <value>Haku</value>
+    <value>Search</value>
   </data>
   <data name="street" xml:space="preserve">
-    <value>Lähiosoite</value>
+    <value>Street address</value>
   </data>
   <data name="tel" xml:space="preserve">
-    <value>Puhelinnumero</value>
+    <value>Phone number</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Poista</value>
+    <value>Edit</value>
   </data>
 </root>
