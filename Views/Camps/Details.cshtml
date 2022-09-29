@@ -30,6 +30,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Camp.Capacity)
         </dd>
+        <dt class="col-sm-2">
+            @Localizer["signups"]
+        </dt>
+            <dd class="col-sm-10">
+                @Model.Campers.Count
+            </dd>
         <dt class = "col-sm-2">
                 @Localizer["start"]
         </dt>
@@ -68,9 +74,22 @@
                 foreach (var item in Model.Counselors)
                     {
                         <tr>
-                            <td>
-                                @item.FirstName @item.LastName
-                            </td>
+                                <td>
+                                @if (Model.CompleteStaff.FirstOrDefault(x => x.Counselor == item.Id).IsInCharge)
+                                {
+                                    
+                                         <a class="fw-bold" asp-controller="Counselors" asp-action="Details" asp-route-id="@item.Id">
+                                             @item.FirstName @item.LastName
+                                         </a>
+                                     
+                                }
+                                else
+                                {
+                                    <a asp-controller="Counselors" asp-action="Details" asp-route-id="@item.Id"> 
+                                        @item.FirstName @item.LastName
+                                    </a>
+                                }
+                                    </td>
                             <td>
                                 @item.Tel
                             </td>

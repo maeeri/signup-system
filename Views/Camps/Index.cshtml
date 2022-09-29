@@ -30,7 +30,13 @@
                     @Localizer["location"]
             </th>
             <th>
-                    @Localizer["capacity"]
+                @Localizer["capacity"]
+            </th>
+            <th>
+                @Localizer["signups"]
+            </th>
+            <th>
+                @Localizer["staff"]
             </th>
             <th>
                     @Localizer["start"]
@@ -58,6 +64,28 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Capacity)
+                </td>
+                <td>
+                        @{
+                            var i = 0;
+                            foreach (var campPeople in Model.AllCampPeople)
+                            {
+                                if (campPeople.Camp == item.Id)
+                                    i++;
+                            }
+                            @i
+                        }
+                </td>
+                <td>
+                    @{
+                        var j = 0;
+                        foreach (var staff in Model.CompleteStaff)
+                        {
+                            if (staff.Camp == item.Id)
+                                j++;
+                        }
+                        @j
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Start)

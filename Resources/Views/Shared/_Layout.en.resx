@@ -150,4 +150,7 @@
   <data name="Staff actions" xml:space="preserve">
     <value>Staff actions</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Summer Camp SignUp Project</value>
+  </data>
 </root>

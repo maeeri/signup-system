@@ -150,4 +150,7 @@
   <data name="Staff actions" xml:space="preserve">
     <value>Työntekijävalikko</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Leiri-ilmoittautumisprojekti</value>
+  </data>
 </root>

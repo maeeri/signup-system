@@ -21,11 +21,55 @@ namespace SignUpProject.Controllers
             _context = context;
         }
 
-        public async Task PopulateDatabase()
+        public async Task<IActionResult> PopulateDatabase()
         {
+            await CreateCamps();
             await SaveRandomCounselors();
             await SaveRandomPeople();
             await MoveCampers();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task CreateCamps()
+        {
+            var camps = new List<Camp>
+            {
+                new Camp()
+                {
+                    Capacity = 20,
+                    End = new DateTime(2023, 6, 2),
+                    Start = new DateTime(2023, 5, 30),
+                    Location = "Leiripaikka",
+                    Name = "Toukokuun leiri"
+                },
+                new Camp()
+                {
+                    Capacity = 35,
+                    End = new DateTime(2023, 6, 20),
+                    Start = new DateTime(2023, 6, 18),
+                    Location = "Leiripaikka",
+                    Name = "Kesäkuun leiri"
+                },
+                new Camp()
+                {
+                    Capacity = 15,
+                    End = new DateTime(2023, 7, 15),
+                    Start = new DateTime(2023, 7, 8),
+                    Location = "Leiripaikka",
+                    Name = "Heinäkuun leiri"
+                },
+                new Camp()
+                {
+                    Capacity = 80,
+                    End = new DateTime(2023, 8, 30),
+                    Start = new DateTime(2023, 8, 25),
+                    Location = "Suurleiripaikka",
+                    Name = "Elokuun suurleiri"
+                }
+            };
+            await _context.Camp.AddRangeAsync(camps);
+            await _context.SaveChangesAsync();
         }
 
         //for populating the database with test data/campers
@@ -46,18 +90,24 @@ namespace SignUpProject.Controllers
             ViewModel viewModel = new ViewModel();
             viewModel.Campers = new List<Camper>();
 
-            for (int i = 0; i < fakeCampersList.Count; i++)
+            foreach (var person in fakeGuardiansList)
             {
                 var guardian = new Guardian()
                 {
-                    Name = fakeGuardiansList[i].firstname + fakeGuardiansList[i].lastname,
-                    Email = fakeGuardiansList[i].email,
-                    Tel = fakeGuardiansList[i].phone
+                    Name = person.firstname + " " + person.lastname,
+                    Email = person.email,
+                    Tel = person.phone
                 };
 
                 _context.Add(guardian);
                 _context.SaveChanges();
-                viewModel.Guardian = _context.Guardian.FirstOrDefault(x => x.Email == guardian.Email && x.Name == guardian.Name);
+            }
+
+            for (int i = 0; i < fakeCampersList.Count; i++)
+            {
+
+                viewModel.Guardians = await _context.Guardian.ToListAsync();
+
                 var camper = new Camper()
                 {
                     FirstName = fakeCampersList[i].firstname,
@@ -66,7 +116,7 @@ namespace SignUpProject.Controllers
                     DoB = Convert.ToDateTime(fakeCampersList[i].birthday),
                     PostalCode = fakeCampersList[i].address.zipcode,
                     City = fakeCampersList[i].address.city,
-                    Guardian = viewModel.Guardian.Id
+                    Guardian = viewModel.Guardians[(int)Math.Floor((double)i/2)].Id
                 };
                 _context.Camper.Add(camper);
                 _context.SaveChanges();
@@ -83,7 +133,7 @@ namespace SignUpProject.Controllers
                 {
                     allergies.Add(new Allergy()
                     {
-                        Item = items[max],
+                        Item = items[rand.Next(0, 5)],
                         Severity = (AllergySeverity)oR,
                         Camper = viewModel.Camper.Id
                     });
@@ -91,23 +141,24 @@ namespace SignUpProject.Controllers
 
                 max = rand.Next(5);
                 var medication = new List<Medication>();
+                string[] medItems = { "med 1", "med 2", "med 3", "med 4", "med 5", "med 6" };
+                string[] inst = { "take when needed", "needs help in taking", "independent" };
                 for (int j = 0; j < max; j++)
                 {
                     medication.Add(new Medication()
                     {
-                        Item = "medicine",
-                        Instructions = "take when needed",
+                        Item = medItems[rand.Next(0, 5)],
+                        Instructions = inst[rand.Next(0, 2)],
                         Camper = viewModel.Camper.Id
                     });
                 }
 
-                int campId = rand.Next(3, 7);
-                viewModel.Camp = _context.Camp.FirstOrDefault(x => x.Id == campId);
+                viewModel.Camps = await _context.Camp.ToListAsync();
 
                 viewModel.CampPeople = new CampPeople()
                 {
                     Camper = viewModel.Camper.Id,
-                    Camp = viewModel.Camp.Id,
+                    Camp = viewModel.Camps[rand.Next(0, 3)].Id,
                     RideIn = max % 2 == 0,
                     RideOut = max % 2 == 0
                 };
@@ -129,6 +180,7 @@ namespace SignUpProject.Controllers
             var fakeCounselorsList = fakeCounselors.data.ToList();
 
             ViewModel viewModel = new ViewModel();
+            viewModel.Camps = await _context.Camp.ToListAsync();
 
             for (int i = 0; i < fakeCounselorsList.Count; i++)
             {
@@ -154,13 +206,13 @@ namespace SignUpProject.Controllers
                 };
 
                 if (i < 4)
-                    viewModel.Staff.Camp = 1;
+                    viewModel.Staff.Camp = viewModel.Camps[0].Id;
                 else if (i < 8)
-                    viewModel.Staff.Camp = 2;
-                else if (i < 13)
-                    viewModel.Staff.Camp = 3;
+                    viewModel.Staff.Camp = viewModel.Camps[1].Id;
+                else if (i < 10)
+                    viewModel.Staff.Camp = viewModel.Camps[2].Id;
                 else
-                    viewModel.Staff.Camp = 4;
+                    viewModel.Staff.Camp = viewModel.Camps[3].Id;
 
                 var anyoneInCharge = false;
                 var campStaff = _context.Staff
@@ -180,12 +232,13 @@ namespace SignUpProject.Controllers
         //for testing purposes, to populate camps evenly
         public async Task MoveCampers()
         {
-            for (int i = 3; i <= 6; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 ViewModel viewModel = new ViewModel();
-                viewModel.AllCampPeople = _context.CampPeople.Where(x => x.Camp == i).ToList();
+                viewModel.Camps = await _context.Camp.ToListAsync();
+                viewModel.AllCampPeople = _context.CampPeople.Where(x => x.Camp == viewModel.Camps[i].Id).ToList();
                 viewModel.Campers = new List<Camper>();
-                viewModel.Camp = await _context.Camp.FirstOrDefaultAsync(x => x.Id == i);
+                viewModel.Camp = await _context.Camp.FirstOrDefaultAsync(x => x.Id == viewModel.Camps[i].Id);
 
                 foreach (var campPeople in viewModel.AllCampPeople)
                 {
@@ -194,12 +247,13 @@ namespace SignUpProject.Controllers
 
                 while (viewModel.Camp.Capacity < viewModel.Campers.Count)
                 {
-                    viewModel.AllCampPeople = _context.CampPeople.Where(x => x.Camp == i).ToList();
+                    viewModel.AllCampPeople = _context.CampPeople.Where(x => x.Camp == viewModel.Camp.Id).ToList();
                     viewModel.CampPeople = viewModel.AllCampPeople[^1];
-                    viewModel.CampPeople.Camp = 5;
+                    if (i < 3)
+                        viewModel.CampPeople.Camp = viewModel.Camps[i+1].Id;
                     viewModel.Camper = _context.Camper.FirstOrDefault(x => x.Id == viewModel.CampPeople.Camper);
                     viewModel.Campers.Remove(viewModel.Camper);
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
                 }
 
                 _context.UpdateRange(viewModel.AllCampPeople);

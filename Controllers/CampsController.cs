@@ -27,6 +27,10 @@ namespace SignUpProject.Controllers
         {
             var viewModel = new ViewModel();
             viewModel.Camps = await _context.Camp?.ToListAsync()!;
+            viewModel.Campers = await _context.Camper.ToListAsync();
+            viewModel.AllCampPeople = await _context.CampPeople.ToListAsync();
+            viewModel.CompleteStaff = await _context.Staff.ToListAsync();
+            viewModel.Counselors = await _context.Counselor.ToListAsync();
 
             return View(viewModel);
         }
@@ -186,23 +190,26 @@ namespace SignUpProject.Controllers
 
             foreach (var conn in viewModel.AllCampPeople)
             {
-                viewModel.Campers.Add(await _context.Camper.FindAsync(conn.Camper));
+                var camper = await _context.Camper.FindAsync(conn.Camper);
+                if (camper != null)
+                    viewModel.Campers.Add(camper);
             }
 
             foreach (var staff in viewModel.CompleteStaff)
             {
-                viewModel.Counselors.Add(await _context.Counselor.FindAsync(staff.Counselor));
+                var counselor = await _context.Counselor.FindAsync(staff.Counselor);
+                if (counselor != null)
+                    viewModel.Counselors.Add(counselor);
             }
 
-            viewModel.Allergies = viewModel.Allergies.OrderBy(x => x.Item).ToList();
+            foreach (var camper in viewModel.Campers)
+            {
+                var allergy = await _context.Allergy.FirstOrDefaultAsync(x => x.Camper == camper.Id);
+                if (allergy != null)
+                    viewModel.Allergies.Add(allergy);
+            }
+            
             viewModel.Guardians = await _context.Guardian.ToListAsync();
-
-            if (viewModel.CompleteStaff != null)
-                foreach (var staff in viewModel.CompleteStaff)
-                {
-                    viewModel.Counselors.Add(
-                        (await _context.Counselor?.FirstOrDefaultAsync(x => x.Id == staff.Counselor)!)!);
-                }
 
             return viewModel;
         }

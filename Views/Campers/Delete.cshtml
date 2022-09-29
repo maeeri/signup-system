@@ -147,13 +147,15 @@
     </div>
     <form asp-action="Delete">
         <input type="hidden" asp-for="Camper.Id" />
-        <input type="submit" value="@Localizer["delete"]" class="btn btn-danger" /> |
+        <input type="submit" value="@Localizer["delete"]" class="btn btn-danger" /> | 
+        <a asp-action="Details">@Localizer["details"]</a> | 
+        <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a>
     </form>
 
 
     <div>
         <div>
-            <div><a asp-action="Details">@Localizer["details"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
+            <div></div>
         </div>
     </div>
 </div>
