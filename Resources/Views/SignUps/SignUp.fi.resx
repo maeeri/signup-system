@@ -153,6 +153,9 @@
   <data name="email" xml:space="preserve">
     <value>Huoltajan sähköposti</value>
   </data>
+  <data name="empty" xml:space="preserve">
+    <value>Näyttää siltä, ettei ole sellaisia leirejä, joille voi ilmoittautua. Ota yhteyttä, jos haluat lisätietoja</value>
+  </data>
   <data name="firstname" xml:space="preserve">
     <value>Etunimi</value>
   </data>

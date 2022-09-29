@@ -8,18 +8,21 @@
 }
 <div class="contents">
     <h1>@Localizer["thanks"]</h1>
-
+    <h3>@Localizer["camper"]</h3>
+    
     <div>
-        <h4>@Localizer["camps"]</h4>
+        <h5>@Localizer["camps"]</h5>
         @{
             foreach (var camp in Model.Camps)
             {
                 <p>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</p>
             }
         }
+        
+        <hr/>
 
-        <h4>@Localizer["camper"]</h4>
-        <hr />
+        <h5>@Localizer["contacts"]</h5>
+
         <dl class="row">
             <dt class="col-sm-2">
                 @Localizer["firstname"]
@@ -34,7 +37,7 @@
                 @Html.DisplayFor(model => model.Camper.LastName)
             </dd>
             <dt class="col-sm-2">
-                @Localizer["streetaddress"]
+                @Localizer["street"]
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Camper.StreetAddress)
@@ -70,10 +73,12 @@
                 @Html.DisplayFor(model => model.Guardian.Email)
             </dd>
         </dl>
-        <dl>
-            <dt class="col-sm-2">
-                @Localizer["allergy"]
-            </dt>
+        
+        <hr/>
+        
+        <h5>@Localizer["allergy"]</h5>
+        <dl class="row">
+            
             @{
                 if (Model.Allergies != null)
                 {
@@ -81,16 +86,20 @@
                     {
                         <dt class="col-sm-2">
                             @allergy.Item
-                            @Localizer[allergy.Severity.ToString()]
                         </dt>
+                        <dd class="col-sm-10">
+                            @Localizer[allergy.Severity.ToString()]
+                        </dd>
                     }
                 }
             }
         </dl>
-        <dl>
-            <dt class="col-sm-2">
-                <p>@Localizer["medication"]</p>
-            </dt>
+        
+        <hr/>
+
+        <h5>@Localizer["medication"]</h5>
+        <dl class="row">
+            
             @{
                 if (Model.Medications != null)
                 {
@@ -98,8 +107,10 @@
                     {
                         <dt class="col-sm-2">
                             @item.Item
-                            @item.Instructions
                         </dt>
+                        <dd class="col-sm-10">
+                            @item.Instructions
+                        </dd>
                     }
                 }
             }

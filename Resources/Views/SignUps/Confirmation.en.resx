@@ -144,6 +144,9 @@
   <data name="city" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="contacts" xml:space="preserve">
+    <value>Contact info</value>
+  </data>
   <data name="dob" xml:space="preserve">
     <value>Date of birth</value>
   </data>

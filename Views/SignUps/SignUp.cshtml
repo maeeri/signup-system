@@ -13,6 +13,14 @@
 <h1>@Localizer["signup"]</h1>
 
 <hr/>
+@{
+    if (Model.Camps.Count == 0)
+    {
+        <div>@Localizer["empty"]</div>
+    }
+    else
+    {
+
 <div class="row">
 <div class="col-xl-4">
 <form asp-action="SignUp">
@@ -20,16 +28,16 @@
 <div class="form-group">
     <label asp-for="Camp.Id" class="control-label">@Localizer["select"]</label><br/>
     <div class="form-group">
-        @{
-            foreach (var camp in Model.Camps)
-            {
-                <div class="form-group">
-                    <input type="radio" name="Camp.Id" value="@camp.Id">
-                    <label>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</label><br>
-                    <input type="hidden" name="CampPeople.Camp" value="@camp.Id"/>
-                </div>
-            }
-        }
+        
+            
+                @foreach (var camp in Model.Camps)
+                {
+                    <div class="form-group">
+                        <input type="radio" name="Camp.Id" value="@camp.Id">
+                        <label>@camp.Name @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy")</label><br>
+                        <input type="hidden" name="CampPeople.Camp" value="@camp.Id"/>
+                    </div>
+                }
         <span asp-validation-for="Camp!.Id" class="text-danger"></span>
     </div>
 </div>
@@ -290,10 +298,14 @@
 </div>
 <div class="col">
     <img src="~/Media/mountains.jpg" width="750"/>
+    </div>
+    </div>
+    
+  
+            }
+            
+        }
 </div>
-</div>
-</div>
-
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

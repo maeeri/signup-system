@@ -153,6 +153,9 @@
   <data name="email" xml:space="preserve">
     <value>Guardian's email address</value>
   </data>
+  <data name="empty" xml:space="preserve">
+    <value>Looks like there are no camps to sign up for. Contact us, if you want to know more</value>
+  </data>
   <data name="firstname" xml:space="preserve">
     <value>First name</value>
   </data>

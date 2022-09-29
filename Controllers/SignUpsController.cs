@@ -18,7 +18,11 @@ namespace SignUpProject.Controllers
         public async Task<IActionResult> SignUp()
         {
             ViewModel viewModel = new ViewModel();
-            if (_context.Camp != null) viewModel.Camps = await _context.Camp.ToListAsync();
+
+            //returns camps, where the capacity has not yet been reached
+            if (_context.Camp != null) viewModel.Camps = await _context.Camp.Where(x => 
+                x.Capacity > _context.CampPeople.Where(y => 
+                    y.Camp == x.Id).ToList().Count).ToListAsync();
             return View(viewModel);
         }
 

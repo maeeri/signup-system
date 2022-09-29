@@ -87,6 +87,7 @@ td, th {
 
 #logo {
     width: 100px;
+    display: inline-block;
 }
 
 img {
@@ -127,4 +128,9 @@ img {
 
 ul {
     list-style: none;
+}
+
+hr {
+    opacity: 1;
+    color: lightgrey;
 }

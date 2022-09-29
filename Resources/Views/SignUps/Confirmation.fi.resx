@@ -144,6 +144,9 @@
   <data name="city" xml:space="preserve">
     <value>Postitoimipaikka</value>
   </data>
+  <data name="contacts" xml:space="preserve">
+    <value>Yhteystiedot</value>
+  </data>
   <data name="dob" xml:space="preserve">
     <value>Syntymäaika</value>
   </data>

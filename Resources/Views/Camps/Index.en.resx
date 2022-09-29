@@ -144,6 +144,12 @@
   <data name="name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="signups" xml:space="preserve">
+    <value>Signed up</value>
+  </data>
+  <data name="staff" xml:space="preserve">
+    <value>Staff</value>
+  </data>
   <data name="start" xml:space="preserve">
     <value>Start</value>
   </data>

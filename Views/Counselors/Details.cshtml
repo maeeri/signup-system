@@ -51,7 +51,10 @@
                             @Html.DisplayFor(model => model.Counselor.Tel)
                         </td>
                     </tr>
-                    <tr>
+                    
+                    @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+                    {
+                        <tr>
                         <td class="fw-bold">
                                 
                             @Localizer["street"]
@@ -77,6 +80,8 @@
                             @Html.DisplayFor(model => model.Counselor.City)
                         </td>
                     </tr>
+                    }
+                    
                     </tbody>
                 </table>
             </div>

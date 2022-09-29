@@ -144,6 +144,12 @@
   <data name="name" xml:space="preserve">
     <value>Nimi</value>
   </data>
+  <data name="signups" xml:space="preserve">
+    <value>Ilmoittautuneita</value>
+  </data>
+  <data name="staff" xml:space="preserve">
+    <value>Ohjaajia</value>
+  </data>
   <data name="start" xml:space="preserve">
     <value>Alkaa</value>
   </data>

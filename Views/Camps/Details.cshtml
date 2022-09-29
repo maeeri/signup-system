@@ -159,6 +159,13 @@
             }
             
         }
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>@Model.AllCampPeople.Where(x => x.RideIn).ToList().Count</td>
+                    <td>@Model.AllCampPeople.Where(x => x.RideOut).ToList().Count</td>
+        </tr>
         </tbody>
     </table>
         <br />
@@ -176,8 +183,18 @@
     <hr/>
 
 </div>
-<div>
-        <a asp-action="Edit" asp-route-id="@Model?.Camp.Id">@Localizer["edit"]</a> |
-        <a asp-action="Index">@Localizer["list"]</a>
-</div>
+    <div>
+        @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
+        {
+            <div>
+                <a asp-action="Edit" asp-route-id="@Model?.Camp.Id">@Localizer["edit"]</a> | <a asp-action="Index">@Localizer["list"]</a>
+                </div>
+        }
+        else
+        {
+            <a asp-action="Index">@Localizer["list"]</a>
+        }
+        
+        
+    </div>
 </div>
