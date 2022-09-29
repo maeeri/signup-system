@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="addcamprole" xml:space="preserve">
+    <value>Add camp role</value>
+  </data>
   <data name="camps" xml:space="preserve">
     <value>Camps</value>
   </data>
@@ -146,6 +149,9 @@
   </data>
   <data name="postcode" xml:space="preserve">
     <value>Post code</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search</value>
   </data>
   <data name="street" xml:space="preserve">
     <value>Street address</value>

@@ -70,7 +70,7 @@ namespace SignUpProject.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Edit(int id, [Bind("Camper, Allergies, CampPeople")] ViewModel viewModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Camper, Allergies, CampPeople, Guardian")] ViewModel viewModel)
         {
             if (id != viewModel.Camper.Id)
             {
@@ -82,6 +82,7 @@ namespace SignUpProject.Controllers
                 try
                 {
                     _context.Update(viewModel.Camper);
+                    _context.Update(viewModel.Guardian);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

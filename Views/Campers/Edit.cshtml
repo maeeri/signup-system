@@ -6,10 +6,12 @@
 @{
     ViewData["Title"] = Localizer["title"];
 }
+<div class="contents">
 
-<h1>@Localizer[""] Edit</h1>
 
-<h4>@Localizer[""] Camper</h4>
+<h1>@Localizer["title"]</h1>
+
+<h4>@Localizer["camper"]</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,59 +19,59 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Camper.Id" />
             <div class="form-group">
-                <label asp-for="Camper.FirstName" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.FirstName" class="control-label">@Localizer["firstname"]</label>
                 <input asp-for="Camper.FirstName" class="form-control" />
                 <span asp-validation-for="Camper.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Camper.LastName" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.LastName" class="control-label">@Localizer["lastname"]</label>
                 <input asp-for="Camper.LastName" class="form-control" />
                 <span asp-validation-for="Camper.LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Camper.StreetAddress" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.StreetAddress" class="control-label">@Localizer["street"]</label>
                 <input asp-for="Camper.StreetAddress" class="form-control" />
                 <span asp-validation-for="Camper.StreetAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Camper.PostalCode" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.PostalCode" class="control-label">@Localizer["postcode"]</label>
                 <input asp-for="Camper.PostalCode" class="form-control" />
                 <span asp-validation-for="Camper.PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Camper.City" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.City" class="control-label">@Localizer["city"]</label>
                 <input asp-for="Camper.City" class="form-control" />
                 <span asp-validation-for="Camper.City" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Camper.DoB" class="control-label">@Localizer[""]</label>
+                <label asp-for="Camper.DoB" class="control-label">@Localizer["dob"]</label>
                 <input asp-for="Camper.DoB" class="form-control" />
                 <span asp-validation-for="Camper.DoB" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Guardian.Name" class="control-label">@Localizer[""]</label>
+                <label asp-for="Guardian.Name" class="control-label">@Localizer["guardianname"]</label>
                 <input asp-for="Guardian.Name" class="form-control" />
                 <span asp-validation-for="Guardian.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Guardian.Tel" class="control-label">@Localizer[""]</label>
+                <label asp-for="Guardian.Tel" class="control-label">@Localizer["guardiantel"]</label>
                 <input asp-for="Guardian.Tel" class="form-control" />
                 <span asp-validation-for="Guardian.Tel" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Guardian.Email" class="control-label">@Localizer[""]</label>
+                <label asp-for="Guardian.Email" class="control-label">@Localizer["guardianemail"]</label>
                 <input asp-for="Guardian.Email" class="form-control" />
                 <span asp-validation-for="Guardian.Email" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <input type="submit" value="@Localizer[""] Save" class="btn btn-primary" />
+                <input type="submit" value="@Localizer["save"]" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">@Localizer[""] Back to List</a>
+    <a asp-action="Details" asp-route-id="@Model.Camper.Id">@Localizer["details"]</a>
 </div>
-
+</div>

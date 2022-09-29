@@ -153,6 +153,8 @@ namespace SignUpProject.Controllers
             if (camp != null)
             {
                 _context.Camp.Remove(camp);
+                _context.CampPeople.RemoveRange(_context.CampPeople.Where(x => x.Camp == id));
+                _context.Staff.RemoveRange(_context.Staff.Where(x => x.Camp == id));
             }
 
             await _context.SaveChangesAsync();
