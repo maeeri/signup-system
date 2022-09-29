@@ -2,8 +2,6 @@
 
 A sign up system for summer camps, with dependency with local SQL database
 
-A work in progress
-
 Features:
 
 	Auth0 authorization (organization based), 
