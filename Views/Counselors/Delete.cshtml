@@ -1,0 +1,123 @@
+﻿@model SignUpProject.Models.ViewModel
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+
+@{
+    ViewData["Title"] = Localizer["title"];
+}
+<div class="contents delete">
+    <h1>@Localizer["title"] </h1>
+    
+    <h4>@Localizer["confirm"]</h4>
+
+    <div>
+        <h4>@Localizer["counselor"]</h4>
+        <hr />
+        <div class="row">
+            <div class="col-sm-12 col-lg-6">
+
+                <table>
+                    <thead>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["firstname"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.FirstName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["lastname"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.LastName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["email"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.Email)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["tel"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.Tel)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+
+                                @Localizer["street"]
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.StreetAddress)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["postcode"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.PostalCode)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold">
+                                @Localizer["city"]
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.Counselor.City)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-sm-12 col-lg-6">
+                <h4>@Localizer["camps"]</h4>
+
+
+                <ul>
+                    @foreach (var camp in Model.Camps)
+                    {
+
+                        <li>
+                            <a class="fw-bold" asp-controller="Camps" asp-action="Details" asp-route-id="@camp.Id">@camp.Name</a> | @camp.Start.ToString("d.M.yyyy")-@camp.End.ToString("d.M.yyyy") |
+
+                            @{
+                                var c = Model.CompleteStaff.FirstOrDefault(x => x.Camp == camp.Id && x.Counselor == Model.Counselor.Id);
+                                if (c.IsInCharge)
+                                {
+                                    @Localizer["incharge"]
+                                }
+                            }
+                        </li>
+
+                    }
+                </ul>
+
+            </div>
+            <br />
+        </div>
+    </div>
+    <hr />
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Camper.Id" />
+        <input type="submit" value="@Localizer["delete"]" class="btn btn-danger" /> |
+    </form>
+    
+
+    <div>
+        <div><a asp-action="Details" asp-route-id="@Model?.Counselor.Id">@Localizer["details"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a>></div>
+    </div>
+</div>

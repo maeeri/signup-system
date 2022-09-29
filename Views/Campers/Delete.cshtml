@@ -4,18 +4,18 @@
 @inject IOptions<RequestLocalizationOptions> LocOptions
 
 @{
-    ViewData["Title"] = Localizer["details"];
+    ViewData["Title"] = Localizer["delete"];
 }
-<div class="contents">
-<h1>@Localizer["details"]</h1>
-
+<div class="contents delete">
+    <h1>@Localizer["delete"]</h1>
+    <h4>@Localizer["confirm"]</h4>
     <div class="row">
-        
+
         <hr />
         <div class="col-sm-12 col-lg-6">
 
             <h4>@Localizer["camper"]</h4>
-            
+
             <table>
                 <tbody>
                 <tr>
@@ -27,7 +27,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["lastname"]
                     </td>
                     <td>
@@ -35,7 +35,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["street"]
                     </td>
                     <td>
@@ -43,7 +43,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["postcode"]
                     </td>
                     <td>
@@ -51,7 +51,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["city"]
                     </td>
                     <td>
@@ -59,7 +59,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["dob"]
                     </td>
                     <td>
@@ -67,7 +67,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["guardianname"]
                     </td>
                     <td>
@@ -75,7 +75,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["guardiantel"]
                     </td>
                     <td>
@@ -83,7 +83,7 @@
                     </td>
                 </tr>
                 <tr>
-                        <td class="fw-bold">
+                    <td class="fw-bold">
                         @Localizer["guardianemail"]
                     </td>
                     <td>
@@ -110,7 +110,7 @@
                 }
                 </tbody>
             </table>
-            <br/>
+            <br />
             <table>
                 <thead><h4>@Localizer["medication"]</h4></thead>
                 <tbody>
@@ -128,7 +128,7 @@
 
                 </tbody>
             </table>
-            <br/>
+            <br />
             <div>
                 <h4>@Localizer["camps"]</h4>
                 <ul>
@@ -144,23 +144,16 @@
             </div>
         </div>
         <hr />
-        </div>
-    
-    
+    </div>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Camper.Id" />
+        <input type="submit" value="@Localizer["delete"]" class="btn btn-danger" /> |
+    </form>
+
 
     <div>
         <div>
-            @if ((await AuthorizationService.AuthorizeAsync(User, "AdminRole")).Succeeded)
-            {
-                <div><a asp-action="Edit" asp-route-id="@Model?.Camper.Id">@Localizer["edit"]</a> | 
-                    <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a> |
-                    <a asp-action="Delete" asp-route-id="@Model?.Camper.Id">@Localizer["delete"]</a>
-                </div>
-            }
-            else
-            {
-                <div><a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
-            }
+            <div><a asp-action="Details">@Localizer["details"]</a> | <a asp-action="Search" asp-controller="Data">@Localizer["search"]</a></div>
         </div>
     </div>
 </div>

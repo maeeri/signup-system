@@ -20,12 +20,14 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Guardians
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Guardian.ToListAsync());
         }
 
         // GET: Guardians/Details/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Guardian == null)
@@ -44,6 +46,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Guardians/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -54,6 +57,7 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,Email,Tel")] Guardian guardian)
         {
             if (ModelState.IsValid)
@@ -66,6 +70,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Guardians/Edit/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Guardian == null)
@@ -86,6 +91,7 @@ namespace SignUpProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Email,Tel")] Guardian guardian)
         {
             if (id != guardian.Id)
@@ -117,6 +123,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Guardians/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Guardian == null)
@@ -137,6 +144,7 @@ namespace SignUpProject.Controllers
         // POST: Guardians/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.Guardian == null)

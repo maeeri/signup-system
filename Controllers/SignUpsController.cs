@@ -148,6 +148,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: SignUpsController/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -156,6 +157,7 @@ namespace SignUpProject.Controllers
         // POST: SignUpsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
@@ -171,6 +173,7 @@ namespace SignUpProject.Controllers
         // POST: SignUpsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteCamper(int id)
         {
             ViewModel viewModel = new ViewModel();
@@ -186,6 +189,7 @@ namespace SignUpProject.Controllers
         // POST: SignUpsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try

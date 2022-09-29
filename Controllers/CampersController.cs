@@ -20,12 +20,14 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Campers
+        [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Camper.ToListAsync());
         }
 
         // GET: Campers/Details/5
+        [Authorize(Roles = "Staff")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Camper == null)
@@ -102,6 +104,7 @@ namespace SignUpProject.Controllers
         }
 
         // GET: Campers/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Camper == null)
@@ -122,6 +125,7 @@ namespace SignUpProject.Controllers
         // POST: Campers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var viewModel = await GetCamperViewModel(id);
@@ -151,7 +155,7 @@ namespace SignUpProject.Controllers
                 _context.Remove(viewModel.Guardian);
 
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Home");
         }
 
         private bool CamperExists(int id)
