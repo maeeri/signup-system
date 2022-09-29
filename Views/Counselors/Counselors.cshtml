@@ -31,9 +31,11 @@
                 @foreach (var item in Model.Counselors)
                 {
                     <tr>
-                        <td>
-                            @item.FirstName @item.LastName
-                        </td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.Id">
+                                    @item.FirstName @item.LastName
+                                </a>
+                            </td>
                         <td>
                             @item.Tel
                         </td>
@@ -59,24 +61,9 @@
                                         edit
                                     </span>
                                 </a>
-                                <a asp-action="Details" asp-route-id="@item.Id">
-                                        <span title="@Localizer["details"]" class="material-symbols-outlined">
-                                        info
-                                    </span>
-                                </a>
                                 <a asp-action="Delete" asp-route-id="@item.Id">
                                         <span title="@Localizer["delete"]" class="material-symbols-outlined">
                                         delete
-                                    </span>
-                                </a>
-                            </td>
-                        }
-                        else
-                        {
-                            <td>
-                                <a asp-action="Details" asp-route-id="@item.Id">
-                                        <span title="@Localizer["details"]" class="material-symbols-outlined">
-                                        info
                                     </span>
                                 </a>
                             </td>

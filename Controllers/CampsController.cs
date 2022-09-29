@@ -208,7 +208,9 @@ namespace SignUpProject.Controllers
                 if (allergy != null)
                     viewModel.Allergies.Add(allergy);
             }
-            
+
+            viewModel.Allergies = viewModel.Allergies.OrderBy(x => x.Item).ToList();
+            viewModel.Campers = viewModel.Campers.OrderBy(x => x.LastName).ToList();
             viewModel.Guardians = await _context.Guardian.ToListAsync();
 
             return viewModel;

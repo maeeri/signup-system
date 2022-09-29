@@ -64,9 +64,6 @@
             <th>
                         @Localizer["tel"]
             </th>
-            <th>
-
-            </th>
         </tr>
         @{
             if (Model.Counselors.Count > 0)
@@ -77,11 +74,9 @@
                                 <td>
                                 @if (Model.CompleteStaff.FirstOrDefault(x => x.Counselor == item.Id).IsInCharge)
                                 {
-                                    
-                                         <a class="fw-bold" asp-controller="Counselors" asp-action="Details" asp-route-id="@item.Id">
+                                    <a class="fw-bold" asp-controller="Counselors" asp-action="Details" asp-route-id="@item.Id">
                                              @item.FirstName @item.LastName
                                          </a>
-                                     
                                 }
                                 else
                                 {
@@ -92,13 +87,6 @@
                                     </td>
                             <td>
                                 @item.Tel
-                            </td>
-                            <td>
-                                <a asp-action="Details" asp-controller="Counselors" asp-route-id="@item.Id">
-                                    <span title="@Localizer["details"]" class="material-symbols-outlined">
-                                        info
-                                    </span>
-                                </a>
                             </td>
                         </tr>
                     }
@@ -132,9 +120,6 @@
             <th>
                 @Localizer["rideout"]
             </th>
-            <th>
-
-            </th>
         </tr>
         @{
             if (Model.Campers.Count > 0)
@@ -144,7 +129,7 @@
                     var campPeople = Model.AllCampPeople.FirstOrDefault(x => x.Camper == item.Id);
                     <tr>
                         <td>
-                            @item.FirstName @item.LastName
+                                    <a asp-controller="Campers" asp-action="Details" asp-route-id="@item.Id">@item.FirstName @item.LastName</a>
                         </td>
                         <td>
                             @Model.Guardians.FirstOrDefault(x => x.Id == item.Guardian).Name
@@ -167,14 +152,6 @@
                                     check
                                 </span>
                             }
-                        </td>
-                            
-                        <td>
-                            <a asp-action="Details" asp-controller="Campers" asp-route-id="@item.Id">
-                                <span title="@Localizer["details"]" class="material-symbols-outlined">
-                                    info
-                                </span>
-                            </a>
                         </td>
                         
                     </tr>
