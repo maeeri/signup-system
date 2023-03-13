@@ -169,8 +169,10 @@ namespace SignUpProject.Controllers
             viewModel.Camper = await _context.Camper.FindAsync(id);
             viewModel.Camps = new List<Camp>();
             viewModel.AllCampPeople = await _context.CampPeople.Where(x => x.Camper == id).ToListAsync();
-            viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
-            viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
+            viewModel.Allergies = new List<Allergy>();
+            viewModel.Medications = new List<Medication>();
+            //viewModel.Allergies = await _context.Allergy.Where(x => x.Camper == id).ToListAsync();
+            //viewModel.Medications = await _context.Medication.Where(x => x.Camper == id).ToListAsync();
             viewModel.Guardian = await _context.Guardian.FirstOrDefaultAsync(x => x.Id == viewModel.Camper!.Guardian);
 
             foreach (var link in viewModel.AllCampPeople)

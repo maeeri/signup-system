@@ -202,12 +202,14 @@ namespace SignUpProject.Controllers
                     viewModel.Counselors.Add(counselor);
             }
 
-            foreach (var camper in viewModel.Campers)
-            {
-                var allergy = await _context.Allergy.FirstOrDefaultAsync(x => x.Camper == camper.Id);
-                if (allergy != null)
-                    viewModel.Allergies.Add(allergy);
-            }
+            //foreach (var camper in viewModel.Campers)
+            //{
+            //    var allergy = await _context.Allergy.FirstOrDefaultAsync(x => x.Camper == camper.Id);
+            //    if (allergy != null)
+            //    {
+            //        viewModel.Allergies.Add(allergy);
+            //    }
+            //}
 
             viewModel.Allergies = viewModel.Allergies.OrderBy(x => x.Item).ToList();
             viewModel.Campers = viewModel.Campers.OrderBy(x => x.LastName).ToList();

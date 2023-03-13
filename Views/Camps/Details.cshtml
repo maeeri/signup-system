@@ -34,7 +34,7 @@
             @Localizer["signups"]
         </dt>
             <dd class="col-sm-10">
-                @Model.Campers.Count
+                @Model.Campers?.Count
             </dd>
         <dt class = "col-sm-2">
                 @Localizer["start"]
@@ -172,13 +172,13 @@
         <hr />
     <br />
     
-    <h4>@Localizer["dietinfo"]</h4>
+    @*<h4>@Localizer["dietinfo"]</h4>
         <ul>
     @foreach (var allergy in Model.Allergies)
     {
         <li>@allergy.Item, @Localizer[@allergy.Severity.ToString()]</li>
     }
-    </ul>
+    </ul>*@
     <br/>
     <hr/>
 

@@ -94,11 +94,14 @@
             </table>
         </div>
         <div class="col-sm-12 col-lg-6">
+            @if (Model.Allergies.Count > 0)
+            {
             <table>
                 <thead><h4>@Localizer["allergies"]</h4></thead>
                 <tbody>
-                @foreach (var allergy in Model.Allergies)
-                {
+                
+                    @foreach (var allergy in Model.Allergies)
+                    {
                     <tr>
                         <td class="fw-bold">
                             @allergy.Item
@@ -107,11 +110,14 @@
                             @Localizer[allergy.Severity.ToString()]
                         </td>
                     </tr>
-                }
+                    }
                 </tbody>
             </table>
+            }
             <br/>
-            <table>
+            @if (Model.Medications.Count > 0)
+            {
+                <table>
                 <thead><h4>@Localizer["medication"]</h4></thead>
                 <tbody>
                 @foreach (var med in Model.Medications)
@@ -127,7 +133,10 @@
                 }
 
                 </tbody>
-            </table>
+                </table>
+
+            }
+            
             <br/>
             <div>
                 <h4>@Localizer["camps"]</h4>
